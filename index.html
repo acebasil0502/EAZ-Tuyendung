@@ -514,5 +514,163 @@
             </div>
         </div>
     </div>
+    <!-- Chatbot Button -->
+    <div id="chat-button" class="fixed bottom-8 right-8 z-[100] cursor-pointer group">
+        <div class="w-16 h-16 bg-[#FF6B9E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+            <span class="material-symbols-outlined text-white text-3xl">chat</span>
+        </div>
+        <div class="absolute -top-12 right-0 bg-white px-4 py-2 rounded-xl shadow-lg border border-pink-50 text-[#001e40] text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Chat cùng EAZ Assistant!</div>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="fixed bottom-28 right-8 w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] bg-white rounded-[2.5rem] shadow-[0_24px_48px_-8px_rgba(0,30,64,0.3)] z-[100] flex flex-col overflow-hidden transition-all duration-500 translate-y-10 opacity-0 pointer-events-none scale-95 origin-bottom-right">
+        <!-- Chat Header -->
+        <div class="p-6 bg-gradient-to-r from-[#001e40] to-[#1f477b] text-white flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#FF6B9E] rounded-xl flex items-center justify-center font-bold text-lg">E</div>
+                <div>
+                    <div class="font-bold">EAZ Assistant</div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-[10px] text-white/70 uppercase tracking-widest font-bold">Trực tuyến</span>
+                    </div>
+                </div>
+            </div>
+            <button id="close-chat" class="hover:bg-white/10 p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Chat Body -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50/50">
+            <!-- Welcome Message -->
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-lg bg-[#FF6B9E]/10 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-[#FF6B9E] text-sm">robot_2</span>
+                </div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-pink-50 max-w-[80%] text-sm text-[#001e40] leading-relaxed">
+                    Chào bạn! EAZ Assistant có thể giúp gì cho quá trình phát triển kinh doanh hoặc ứng tuyển của bạn hôm nay?
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-6 bg-white border-t border-gray-100">
+            <form id="chat-form" class="relative">
+                <input id="chat-input" type="text" placeholder="Nhập tin nhắn..." class="w-full pl-6 pr-14 py-4 rounded-2xl bg-gray-100 border-none text-[#001e40] placeholder-gray-400 focus:ring-2 focus:ring-[#FF6B9E] transition-all outline-none" autocomplete="off"/>
+                <button type="submit" class="absolute right-2 top-2 w-10 h-10 bg-[#FF6B9E] text-white rounded-xl flex items-center justify-center hover:bg-pink-600 transition-all shadow-lg shadow-pink-100">
+                    <span class="material-symbols-outlined text-lg">send</span>
+                </button>
+            </form>
+            <div class="mt-3 text-center">
+                <span class="text-[10px] text-gray-400 font-medium">Powered by CES Technology</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Logic -->
+    <script type="module">
+        import OpenAI from "https://esm.sh/openai@4.28.0";
+
+        const chatBtn = document.getElementById('chat-button');
+        const chatWin = document.getElementById('chat-window');
+        const closeBtn = document.getElementById('close-chat');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const messagesContainer = document.getElementById('chat-messages');
+
+        // Toggle Chat Window
+        chatBtn.addEventListener('click', () => {
+            chatWin.classList.toggle('opacity-0');
+            chatWin.classList.toggle('pointer-events-none');
+            chatWin.classList.toggle('translate-y-10');
+            chatWin.classList.toggle('scale-95');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatWin.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10', 'scale-95');
+        });
+
+        // Initialize OpenAI Client
+        const openai = new OpenAI({
+            baseURL: "https://9router.vuhai.io.vn/v1",
+            apiKey: "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f",
+            dangerouslyAllowBrowser: true // Essential for client-side use
+        });
+
+        let chatHistory = [
+            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin." }
+        ];
+
+        function addMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `flex gap-3 ${role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`;
+            
+            const icon = role === 'user' ? 'person' : 'robot_2';
+            const iconBg = role === 'user' ? 'bg-[#001e40]' : 'bg-[#FF6B9E]/10';
+            const iconColor = role === 'user' ? 'text-white' : 'text-[#FF6B9E]';
+            const msgBg = role === 'user' ? 'bg-[#001e40] text-white' : 'bg-white text-[#001e40] border border-pink-50';
+            const msgRadius = role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none';
+
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-lg \${iconBg} flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined \${iconColor} text-sm">\${icon}</span>
+                </div>
+                <div class="\${msgBg} p-4 rounded-2xl \${msgRadius} shadow-sm max-w-[80%] text-sm leading-relaxed">
+                    \${text}
+                </div>
+            `;
+            messagesContainer.appendChild(div);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.id = 'typing-indicator';
+            div.className = 'flex gap-3';
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-lg bg-[#FF6B9E]/10 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-[#FF6B9E] text-sm">robot_2</span>
+                </div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-pink-50 text-sm text-gray-400">
+                    <div class="flex gap-1">
+                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce"></div>
+                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(div);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            chatInput.value = '';
+            addMessage('user', message);
+            chatHistory.push({ role: "user", content: message });
+
+            showTyping();
+
+            try {
+                const response = await openai.chat.completions.create({
+                    model: "ces-chatbot-gpt-5.4",
+                    messages: chatHistory,
+                });
+
+                document.getElementById('typing-indicator')?.remove();
+                const aiResponse = response.choices[0].message.content;
+                addMessage('assistant', aiResponse);
+                chatHistory.push({ role: "assistant", content: aiResponse });
+            } catch (error) {
+                console.error("Chat Error:", error);
+                document.getElementById('typing-indicator')?.remove();
+                addMessage('assistant', "Xin lỗi, hiện tại tôi đang gặp sự cố kết nối. Vui lòng thử lại sau!");
+            }
+        });
+    </script>
 </footer>
 </body></html>
