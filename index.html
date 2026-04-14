@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -571,6 +571,7 @@
     <!-- Chatbot Logic -->
     <script type="module">
         import OpenAI from "https://esm.sh/openai@4.28.0";
+        import { marked } from "https://esm.sh/marked@12.0.1";
 
         const chatBtn = document.getElementById('chat-button');
         const chatWin = document.getElementById('chat-window');
@@ -612,12 +613,19 @@
             const msgBg = role === 'user' ? 'bg-[#001e40] text-white' : 'bg-white text-[#001e40] border border-pink-50';
             const msgRadius = role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none';
 
+            const parsedText = role === 'assistant' ? marked.parse(text) : text;
+            const proseClass = role === 'assistant' 
+                ? 'prose prose-sm max-w-none text-[#001e40] prose-p:leading-relaxed prose-a:text-[#FF6B9E] prose-p:my-1 prose-ul:my-1 prose-li:my-0' 
+                : 'whitespace-pre-wrap';
+
             div.innerHTML = `
                 <div class="w-8 h-8 rounded-lg ${iconBg} flex items-center justify-center shrink-0">
                     <span class="material-symbols-outlined ${iconColor} text-sm">${icon}</span>
                 </div>
-                <div class="${msgBg} p-4 rounded-2xl ${msgRadius} shadow-sm max-w-[80%] text-sm leading-relaxed">
-                    ${text}
+                <div class="${msgBg} p-4 rounded-2xl ${msgRadius} shadow-sm max-w-[80%] text-sm leading-relaxed overflow-hidden">
+                    <div class="${proseClass}">
+                        ${parsedText}
+                    </div>
                 </div>
             `;
             messagesContainer.appendChild(div);
