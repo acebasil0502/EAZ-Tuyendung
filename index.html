@@ -613,11 +613,11 @@
             const msgRadius = role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none';
 
             div.innerHTML = `
-                <div class="w-8 h-8 rounded-lg \${iconBg} flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined \${iconColor} text-sm">\${icon}</span>
+                <div class="w-8 h-8 rounded-lg ${iconBg} flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined ${iconColor} text-sm">${icon}</span>
                 </div>
-                <div class="\${msgBg} p-4 rounded-2xl \${msgRadius} shadow-sm max-w-[80%] text-sm leading-relaxed">
-                    \${text}
+                <div class="${msgBg} p-4 rounded-2xl ${msgRadius} shadow-sm max-w-[80%] text-sm leading-relaxed">
+                    ${text}
                 </div>
             `;
             messagesContainer.appendChild(div);
