@@ -602,12 +602,81 @@
         });
 
         let chatHistory = [
-            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin." }
+            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin.\n\nQuy tắc đặc biệt: Trong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm một đoạn mã JSON vào cuối cùng của câu trả lời theo đúng định dạng sau:\n||LEAD_DATA: {\"name\": \"...\", \"phone\": \"...\", \"email\": \"...\"}||\nNếu thông tin nào chưa có, hãy để null.\nTUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng." }
         ];
 
         const userAvatarSeed = Math.random().toString(36).substring(7);
         const userAvatarUrl = `https://i.pravatar.cc/150?u=${userAvatarSeed}`;
         const assistantAvatarUrl = `assets/assistant_avatar.png`;
+
+        // ============================================================
+        // HÀM BÓC TÁCH DỮ LIỆU LEAD TỪ CÂU TRẢ LỜI CỦA AI VÀ LƯU TRỮ
+        // ============================================================
+        
+        // URL của Google Apps Script Web App (sẽ lấy ở Bước 3)
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOY_ID/exec';
+        
+        // Tạo Session ID duy nhất cho mỗi phiên tải trang
+        const AI_CHAT_SESSION_ID = 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+        
+        function processAIResponse(aiResponse, chatHistoryArray = []) {
+            const dataPattern = /\|\|LEAD_DATA:\s*(\{.*?\})\s*\|\|/;
+        
+            // Xây dựng lại Text Lịch sử Chat cho dễ đọc trên Google Sheets
+            let formattedHistory = "";
+            if (chatHistoryArray && chatHistoryArray.length > 0) {
+                formattedHistory = chatHistoryArray
+                    .filter(msg => msg.role !== 'system') // Không log lệnh hệ thống
+                    .map(msg => {
+                        let role = msg.role === 'user' ? 'Khách' : 'AI';
+                        // Lọc bỏ tag ẩn trước khi lưu vào file GG Sheets
+                        let content = msg.content.replace(dataPattern, "").trim();
+                        return `${role}: ${content}`;
+                    }).join('\n\n');
+            }
+        
+            if (aiResponse.includes("||LEAD_DATA:")) {
+                const match = aiResponse.match(dataPattern);
+        
+                if (match && match[1]) {
+                    try {
+                        const leadData = JSON.parse(match[1]);
+                        console.log("✅ Dữ liệu khách hàng bóc được:", leadData);
+        
+                        // Gửi dữ liệu đồng bộ
+                        if (leadData.name || leadData.phone || leadData.email) {
+                            sendLeadToGoogleSheets(leadData, formattedHistory);
+                        }
+                    } catch (error) {
+                        console.error("❌ Lỗi parse JSON từ AI:", error);
+                    }
+                }
+                aiResponse = aiResponse.replace(dataPattern, "").trim();
+            }
+            return aiResponse;
+        }
+        
+        async function sendLeadToGoogleSheets(leadData, chatHistoryText) {
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: leadData.name || '',
+                        phone: leadData.phone || '',
+                        email: leadData.email || '',
+                        source: window.location.href,
+                        sessionId: AI_CHAT_SESSION_ID,
+                        chatHistory: chatHistoryText,
+                        timestamp: new Date().toLocaleString('vi-VN')
+                    })
+                });
+                console.log("📤 Đã đồng bộ dữ liệu vào Google Sheets!");
+            } catch (err) {
+                console.warn("⚠️ Không gửi được dữ liệu lead:", err);
+            }
+        }
 
         function addMessage(role, text) {
             const div = document.createElement('div');
@@ -674,9 +743,18 @@
                 });
 
                 document.getElementById('typing-indicator')?.remove();
-                const aiResponse = response.choices[0].message.content;
-                addMessage('assistant', aiResponse);
-                chatHistory.push({ role: "assistant", content: aiResponse });
+
+                // Lấy phản hồi nguyên bản của AI (có thể bao gồm tag JSON ẩn)
+                let rawAiResponse = response.choices[0].message.content;
+                
+                // Xử lý bóc tách dữ liệu Lead, đẩy lên Google Sheets và xoá tag khỏi chuỗi
+                let cleanAiResponse = processAIResponse(rawAiResponse, chatHistory);
+
+                // Thêm tin nhắn sạch vào giao diện người dùng
+                addMessage('assistant', cleanAiResponse);
+
+                // Push tin gốc (có kèm tag nếu có) vào lịch sử để duy trì context JSON format cho lượt sau
+                chatHistory.push({ role: "assistant", content: rawAiResponse });
             } catch (error) {
                 console.error("Chat Error:", error);
                 document.getElementById('typing-indicator')?.remove();
