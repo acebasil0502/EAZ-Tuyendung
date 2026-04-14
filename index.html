@@ -602,7 +602,7 @@
         });
 
         let chatHistory = [
-            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin.\n\nQuy tắc đặc biệt: Trong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm một đoạn mã JSON vào cuối cùng của câu trả lời theo đúng định dạng sau:\n||LEAD_DATA: {\"name\": \"...\", \"phone\": \"...\", \"email\": \"...\"}||\nNếu thông tin nào chưa có, hãy để null.\nTUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng." }
+            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin.\n\nQuy tắc đặc biệt: Trong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm một đoạn mã JSON vào cuối cùng của câu trả lời theo đúng định dạng sau:\n||LEAD_DATA: {\"name\": \"...\", \"phone\": \"...\", \"email\": \"...\", \"job_position\": \"...\"}||\nNếu thông tin nào chưa có, hãy để null. job_position là tên vị trí người dùng quan tâm ứng tuyển.\nTUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng." }
         ];
 
         const userAvatarSeed = Math.random().toString(36).substring(7);
@@ -669,6 +669,7 @@
                         source: window.location.href,
                         sessionId: AI_CHAT_SESSION_ID,
                         chatHistory: chatHistoryText,
+                        job_position: leadData.job_position || '',
                         timestamp: new Date().toLocaleString('vi-VN')
                     })
                 });
