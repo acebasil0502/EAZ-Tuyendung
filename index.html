@@ -1,845 +1,1014 @@
-<!DOCTYPE html>
-
-<html class="light" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-tertiary-fixed": "#341100",
-              "inverse-primary": "#a7c8ff",
-              "outline": "#737780",
-              "surface-container": "#eeedf2",
-              "surface-dim": "#dad9de",
-              "on-secondary-fixed": "#0f1c2f",
-              "on-background": "#1a1c1f",
-              "surface-container-lowest": "#ffffff",
-              "tertiary-container": "#592300",
-              "surface-bright": "#f9f9fe",
-              "secondary-container": "#d6e3fe",
-              "on-secondary-fixed-variant": "#3b475d",
-              "primary": "#001e40",
-              "tertiary-fixed": "#ffdbca",
-              "inverse-on-surface": "#f1f0f5",
-              "on-primary-fixed": "#001b3c",
-              "outline-variant": "#c3c6d1",
-              "primary-container": "#003366",
-              "on-primary": "#ffffff",
-              "on-tertiary-fixed-variant": "#723610",
-              "surface-container-high": "#e8e8ed",
-              "on-primary-fixed-variant": "#1f477b",
-              "surface-container-highest": "#e2e2e7",
-              "surface": "#f9f9fe",
-              "error": "#ba1a1a",
-              "error-container": "#ffdad6",
-              "on-secondary": "#ffffff",
-              "on-surface-variant": "#43474f",
-              "surface-container-low": "#f4f3f8",
-              "secondary-fixed": "#d6e3fe",
-              "secondary-fixed-dim": "#bac7e1",
-              "surface-tint": "#3a5f94",
-              "tertiary-fixed-dim": "#ffb690",
-              "on-tertiary": "#ffffff",
-              "on-primary-container": "#799dd6",
-              "background": "#f9f9fe",
-              "secondary": "#525f75",
-              "on-surface": "#1a1c1f",
-              "tertiary": "#381300",
-              "surface-variant": "#e2e2e7",
-              "primary-fixed": "#d5e3ff",
-              "inverse-surface": "#2f3034",
-              "on-tertiary-container": "#d8885c",
-              "on-error-container": "#93000a",
-              "on-error": "#ffffff",
-              "primary-fixed-dim": "#a7c8ff"
-            },
-            fontFamily: {
-              "headline": ["Manrope"],
-              "body": ["Be Vietnam Pro"],
-              "label": ["Be Vietnam Pro"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EAZ Việt Nam | Tuyển dụng & Thương mại điện tử</title>
+    <meta
+      name="description"
+      content="EAZ Việt Nam - đối tác thương mại điện tử chiến lược toàn diện, đồng hành cùng doanh nghiệp trong xây dựng thương hiệu, phát triển doanh số và vận hành bán lẻ đa kênh."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --muted: #657086;
+        --line: #dfe5ee;
+        --bg: #f7f9fc;
+        --surface: #ffffff;
+        --primary: #0f356f;
+        --primary-2: #1554a0;
+        --pink: #f05b93;
+        --green: #17855f;
+        --amber: #f2a23a;
+        --soft-blue: #eaf2ff;
+        --soft-pink: #fff0f6;
+        --soft-green: #eaf8f3;
+        --shadow: 0 22px 60px rgba(23, 32, 51, 0.1);
       }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: "Be Vietnam Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.92);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        width: min(1180px, calc(100% - 40px));
+        min-height: 72px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--primary);
+        box-shadow: 0 14px 30px rgba(15, 53, 111, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        padding: 9px 10px;
+        border-radius: 8px;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+        background: var(--soft-blue);
+      }
+
+      .nav-cta,
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 0 18px;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+      }
+
+      .nav-cta,
+      .button.primary {
+        color: #fff;
+        background: var(--primary);
+      }
+
+      .button.secondary {
+        color: var(--primary);
+        background: var(--soft-blue);
+      }
+
+      .menu-button {
+        display: none;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .hero {
+        width: min(1180px, calc(100% - 40px));
+        min-height: calc(100vh - 72px);
+        margin: 0 auto;
+        padding: 58px 0 52px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+        gap: 44px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--pink);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 22px;
+        color: var(--primary);
+        font-size: clamp(44px, 6vw, 78px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+        color: var(--primary);
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 8px;
+        color: var(--primary);
+        line-height: 1.28;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin-bottom: 28px;
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-media {
+        position: relative;
+      }
+
+      .hero-image {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-image img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+
+      .proof-panel {
+        position: absolute;
+        left: -28px;
+        bottom: 28px;
+        width: min(310px, calc(100% - 24px));
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow);
+      }
+
+      .proof-panel strong {
+        display: block;
+        color: var(--primary);
+        font-size: 26px;
+        line-height: 1.1;
+      }
+
+      .proof-panel span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .section {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 78px 0;
+      }
+
+      .section-heading {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading p:not(.eyebrow) {
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .band {
+        width: 100%;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .stat,
+      .card,
+      .job-card,
+      .contact-panel,
+      .timeline article {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .stat {
+        padding: 22px;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--primary);
+        font-size: 28px;
+        line-height: 1.1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+        gap: 42px;
+        align-items: start;
+      }
+
+      .info-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 18px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcff;
+      }
+
+      .info-row strong {
+        color: var(--primary);
+      }
+
+      .cards {
+        display: grid;
+        gap: 14px;
+      }
+
+      .cards.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cards.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .card p,
+      .job-card p,
+      .timeline p {
+        color: var(--muted);
+      }
+
+      .card.accent-blue {
+        background: var(--soft-blue);
+      }
+
+      .card.accent-pink {
+        background: var(--soft-pink);
+      }
+
+      .card.accent-green {
+        background: var(--soft-green);
+      }
+
+      .vision-board {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+      }
+
+      .vision-main {
+        grid-row: span 2;
+        padding: 28px;
+        color: #fff;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      }
+
+      .vision-main .eyebrow,
+      .vision-main h2 {
+        color: #fff;
+      }
+
+      .brand-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .brand-card {
+        overflow: hidden;
+      }
+
+      .brand-card img {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+        background: #f1f4f8;
+      }
+
+      .brand-card div {
+        padding: 20px;
+      }
+
+      .jobs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .job-card {
+        display: grid;
+        gap: 14px;
+        padding: 22px;
+      }
+
+      .job-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        border-radius: 999px;
+        padding: 0 10px;
+        color: var(--primary);
+        background: var(--soft-blue);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .job-card ul {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .timeline article {
+        padding: 24px;
+      }
+
+      .timeline span {
+        color: var(--pink);
+        font-weight: 800;
+      }
+
+      .culture {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+        gap: 22px;
+      }
+
+      .culture-note {
+        padding: 28px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--primary);
+      }
+
+      .culture-note h2 {
+        color: #fff;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+
+      .contact-panel {
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcff;
+        color: var(--ink);
+        font: inherit;
+        padding: 12px 13px;
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--primary-2);
+        box-shadow: 0 0 0 3px var(--soft-blue);
+      }
+
+      .footer {
+        padding: 28px 0 42px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 50;
+        max-width: min(360px, calc(100% - 36px));
+        padding: 13px 15px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--primary);
+        box-shadow: var(--shadow);
+      }
+
+      @media (max-width: 980px) {
+        .nav {
+          flex-wrap: wrap;
+          padding: 12px 0;
         }
-        .signature-gradient {
-            background: linear-gradient(135deg, #001e40 0%, #003366 100%);
+
+        .menu-button {
+          display: inline-flex;
         }
-        .glass-nav {
-            backdrop-filter: blur(24px);
+
+        .nav-links {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #f9f9fe; color: #1a1c1f; }
-        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-cta {
+          display: none;
+        }
+
+        .hero,
+        .split,
+        .vision-board,
+        .culture,
+        .contact {
+          grid-template-columns: 1fr;
+        }
+
+        .proof-panel {
+          position: static;
+          width: 100%;
+          margin-top: 12px;
+        }
+
+        .stats,
+        .cards.three,
+        .cards.four,
+        .brand-grid,
+        .jobs,
+        .timeline {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav,
+        .hero,
+        .section,
+        .footer-inner {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 36px;
+        }
+
+        h1 {
+          font-size: 42px;
+        }
+
+        .stats,
+        .cards.three,
+        .cards.four,
+        .brand-grid,
+        .jobs,
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .info-row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+        }
+      }
     </style>
-</head>
-<body class="bg-surface text-on-surface">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
-        <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-[#FF6B9E] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-pink-200">E</div>
-            <div class="text-2xl font-extrabold text-[#001e40] font-['Manrope'] tracking-tight">EAZ Vietnam</div>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a class="brand" href="#home" aria-label="Về đầu trang">
+          <span class="brand-mark">EAZ</span>
+          <span>EAZ Việt Nam</span>
+        </a>
+        <button class="button menu-button" type="button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#about">Giới thiệu</a>
+          <a href="#vision">Định hướng</a>
+          <a href="#brands">Thương hiệu</a>
+          <a href="#culture">Văn hóa</a>
+          <a href="#jobs">Tuyển dụng</a>
+          <a href="#contact">Liên hệ</a>
         </div>
-        <div class="hidden md:flex items-center space-x-8">
-            <a class="text-[#001e40] hover:text-[#FF6B9E] transition-colors font-semibold" href="#hero">Trang chủ</a>
-            <a class="text-[#1a1c1f]/70 hover:text-[#FF6B9E] transition-colors font-semibold" href="#about">Về chúng tôi</a>
-            <a class="text-[#1a1c1f]/70 hover:text-[#FF6B9E] transition-colors font-semibold" href="#jobs">Tuyển dụng</a>
-            <a class="text-[#1a1c1f]/70 hover:text-[#FF6B9E] transition-colors font-semibold" href="#services">Giải pháp</a>
-            <a class="text-[#1a1c1f]/70 hover:text-[#FF6B9E] transition-colors font-semibold" href="#portfolio">Thương hiệu</a>
-            <a class="text-[#1a1c1f]/70 hover:text-[#FF6B9E] transition-colors font-semibold" href="#contact">Liên hệ</a>
-        </div>
+        <a class="nav-cta" href="#jobs">Gia nhập EAZ</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
         <div>
-            <a href="#jobs" class="bg-[#001e40] text-white px-6 py-2.5 rounded-full font-bold hover:scale-105 transition-transform shadow-md inline-block">Gia nhập ngay</a>
+          <p class="eyebrow">eCommerce from A to Z</p>
+          <h1>Đối tác thương mại điện tử chiến lược toàn diện</h1>
+          <p class="hero-copy">
+            EAZ Việt Nam đồng hành cùng doanh nghiệp trong xây dựng thương hiệu, phát triển doanh số và vận hành
+            hệ sinh thái bán lẻ đa kênh, đặc biệt trong ngành hàng Mẹ & Bé và Chăm sóc gia đình.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#about">Tìm hiểu EAZ</a>
+            <a class="button secondary" href="#jobs">Xem vị trí tuyển dụng</a>
+          </div>
         </div>
-    </div>
-</nav>
-
-<main>
-    <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-pink-50 to-white min-h-[90vh] flex items-center">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="z-10 text-center lg:text-left">
-                <span class="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider text-[#FF6B9E] bg-[#FF6B9E]/10 rounded-full uppercase italic">Thương mại điện tử & Giải pháp</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-[#001e40] leading-[1.1] mb-8 tracking-tighter">
-                    Giải pháp bán hàng đột phá ngành <span class="text-[#FF6B9E]">Mẹ & Bé</span>
-                </h1>
-                <p class="text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">EAZ Vietnam cung cấp hệ sinh thái giải pháp TMĐT toàn diện, giúp các thương hiệu Mẹ & Bé vươn tầm và chiếm lĩnh thị trường.</p>
-                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <a href="#portfolio" class="bg-[#FF6B9E] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-pink-600 transition-all">Các thương hiệu</a>
-                    <a href="#about" class="bg-white border-2 border-[#001e40] text-[#001e40] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-50 transition-all">Về EAZ</a>
-                </div>
-            </div>
-            <div class="relative group">
-                <div class="relative rounded-[3rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(255,107,158,0.2)] z-20 aspect-square">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="assets/hero.jpg" alt="E-commerce growth focus"/>
-                </div>
-                <!-- Interactive Elements -->
-                <div class="absolute top-10 -left-10 bg-white p-4 rounded-2xl shadow-xl z-30 animate-bounce hidden md:block">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600"><span class="material-symbols-outlined">trending_up</span></div>
-                        <div>
-                            <div class="text-sm font-bold text-[#001e40]">Tăng trưởng doanh thu</div>
-                            <div class="text-xs text-gray-500">+200% / năm</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute -top-10 -right-10 w-48 h-48 bg-pink-200/50 rounded-full blur-3xl -z-10 animate-pulse"></div>
-                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl -z-10 animate-pulse"></div>
-            </div>
+        <div class="hero-media">
+          <div class="hero-image">
+            <img src="./assets/hero.jpg" alt="Đội ngũ EAZ phát triển thương mại điện tử" />
+          </div>
+          <div class="proof-panel">
+            <strong>01/06/2025</strong>
+            <span>Cột mốc EAZ Việt Nam chính thức hình thành với định hướng phát triển thương mại điện tử bài bản.</span>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="order-2 lg:order-1 relative">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img class="rounded-3xl shadow-lg w-full h-64 object-cover" src="assets/culture1.jpg" alt="EAZ Hub 1"/>
-                        <img class="rounded-3xl shadow-lg w-full h-48 mt-16 object-cover" src="assets/culture2.jpg" alt="EAZ Hub 2"/>
-                    </div>
-                    <div class="absolute -bottom-8 -right-8 bg-[#001e40] text-white p-8 rounded-[2rem] shadow-2xl hidden md:block">
-                        <div class="text-4xl font-bold mb-2">Omni</div>
-                        <div class="text-sm text-white/70">Giải pháp <br/>đa kênh</div>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-4xl md:text-5xl font-bold text-[#001e40] mb-8 leading-tight">Hub giải pháp kinh doanh <br/><span class="text-[#FF6B9E]">Mẹ & Bé số 1</span></h2>
-                    <p class="text-lg text-on-surface-variant mb-6 leading-relaxed">
-                        EAZ Vietnam là cầu nối chiến lược cung cấp các giải pháp thương mại điện tử đột phá. Chúng tôi không chỉ phân phối, mà còn trực tiếp tham gia vào quá trình nghiên cứu, sản xuất và tối ưu hóa vận hành cho các doanh nghiệp trong ngách Mẹ & Bé.
-                    </p>
-                    <p class="text-lg text-on-surface-variant mb-10 leading-relaxed">
-                        Với sự đồng hành mật thiết từ <span class="font-bold text-[#FF6B9E]">Công ty XNK Green Star</span>, chúng tôi cam kết mang lại những sản phẩm chất lượng vượt trội và hệ thống phân phối độc quyền mạnh mẽ.
-                    </p>
-                    <div class="flex gap-8">
-                        <div>
-                            <div class="text-3xl font-extrabold text-[#FF6B9E]">Green Star</div>
-                            <div class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Đối tác sản xuất độc quyền</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <section class="section">
+        <div class="stats" aria-label="Thông tin nhanh về EAZ">
+          <div class="stat"><strong>3</strong><span>Thương hiệu trọng tâm: Gooby, Rouya, Cohee</span></div>
+          <div class="stat"><strong>10 năm</strong><span>Tầm nhìn dẫn đầu ngành Mẹ & Bé và Người cao tuổi</span></div>
+          <div class="stat"><strong>A-Z</strong><span>Vận hành từ chiến lược, dữ liệu đến tăng trưởng doanh số</span></div>
+          <div class="stat"><strong>2028</strong><span>Mốc phát triển thương hiệu riêng và mở rộng hệ sinh thái</span></div>
         </div>
-    </section>
+      </section>
 
-    <!-- Jobs Section (Recruitment) -->
-    <section id="jobs" class="py-32 bg-[#fffcfd]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="text-[#FF6B9E] font-bold text-sm tracking-widest uppercase mb-4 block">Hồ sơ ứng tuyển</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-[#001e40] mb-6">Cơ hội nghề nghiệp tại EAZ Vietnam</h2>
-                <p class="text-lg text-on-surface-variant max-w-3xl mx-auto">Gia nhập đội ngũ kiến tạo những giá trị mới cho thị trường thương mại điện tử Mẹ & Bé.</p>
-            </div>
+      <div class="band">
+        <section class="section split" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">Chúng tôi là ai?</p>
+            <h2>EAZ được xây dựng bởi đội ngũ giàu kinh nghiệm trong thương mại điện tử</h2>
+            <p>
+              EAZ Việt Nam có khát vọng đưa những sản phẩm chất lượng đến gần hơn với người tiêu dùng Việt thông qua
+              các nền tảng bán lẻ hiện đại. Chúng tôi không chỉ phân phối sản phẩm, mà còn kiến tạo thương hiệu, tối ưu
+              trải nghiệm khách hàng và xây dựng hệ thống vận hành bền vững.
+            </p>
+          </div>
+          <div class="info-stack">
+            <div class="info-row"><strong>Vai trò</strong><span>Đối tác phân phối và phát triển thương hiệu</span></div>
+            <div class="info-row"><strong>Ngành hàng</strong><span>Mẹ & Bé, Chăm sóc gia đình, Người cao tuổi</span></div>
+            <div class="info-row"><strong>Năng lực</strong><span>Xây dựng thương hiệu, bán lẻ đa kênh, vận hành TMĐT, dữ liệu và tăng trưởng</span></div>
+            <div class="info-row"><strong>Cam kết</strong><span>Sản phẩm và dịch vụ chất lượng vượt trội bằng sự tử tế</span></div>
+          </div>
+        </section>
+      </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Job 1 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Nhân viên Vận hành Sàn (E-commerce Operations)</h4>
-                        <span class="bg-pink-100 text-[#FF6B9E] px-4 py-1 rounded-full text-xs font-bold uppercase">Hot</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Quản lý gian hàng Shopee, Lazada, TikTok Shop; đăng sản phẩm, tối ưu SEO sàn, cài đặt khuyến mãi và theo dõi chỉ số vận hành.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Kinh nghiệm Seller Center tối thiểu 6 tháng.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 9 - 15 triệu + Thưởng KPI vận hành.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 2 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Chuyên viên Marketing Sàn (E-com Ads Specialist)</h4>
-                        <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-xs font-bold uppercase">Ads</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Lập kế hoạch và thực thi quảng cáo nội sàn (Shopee/TikTok ads); tối ưu ROAS và tỷ lệ chuyển đổi.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Am hiểu thuật toán sàn, tư duy số liệu tốt.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 12 - 20 triệu + Ngân sách quảng cáo linh hoạt.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 3 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Live Streamer (KOL/Host Livestream)</h4>
-                        <span class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-xs font-bold uppercase">Live</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Livestream bán hàng trên TikTok/Shopee; giới thiệu sản phẩm, tương tác tăng chốt đơn.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Tự tin trước ống kính, giọng nói truyền cảm, năng lượng cao.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương cứng 15 - 30 triệu + Hoa hồng doanh số live.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 4 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Chuyên viên Booking KOL/KOC (Affiliate Coordinator)</h4>
-                        <span class="bg-purple-100 text-purple-600 px-4 py-1 rounded-full text-xs font-bold uppercase">Affiliate</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Tìm kiếm, đàm phán và quản lý mạng lưới KOC/KOL; quản lý chiến dịch Affiliate TikTok Shop.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Có mối quan hệ rộng với Creator, kỹ năng đàm phán tốt.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 10 - 15 triệu + Thưởng doanh thu Affiliate.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 5 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Chuyên viên Phân tích dữ liệu (E-com Data Analyst)</h4>
-                        <span class="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs font-bold uppercase">Data</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Thu thập và phân tích dữ liệu Omni-channel; báo cáo doanh thu, hành vi khách hàng và dự báo xu hướng.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Thành thạo SQL, Excel, Power BI hoặc Tableau.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 15 - 40 triệu. Môi trường data-driven.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 6 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Quản lý Ngành hàng (Category Manager)</h4>
-                        <span class="bg-red-100 text-red-600 px-4 py-1 rounded-full text-xs font-bold uppercase">Strategic</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Xây dựng chiến lược ngành hàng; làm việc với KAM sàn; chịu trách nhiệm doanh số (P&L).</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Tối thiểu 2-3 năm kinh nghiệm quản lý E-com.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 20 - 45 triệu + Thưởng cuối năm hấp dẫn.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 7 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Nhân viên Xử lý đơn hàng (Fulfillment Executive)</h4>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Tiếp nhận đơn hàng từ OMS; phối hợp kho đóng gói; xử lý khiếu nại và hành trình đơn hàng.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Cẩn thận, chịu khó, chịu áp lực mùa Sale.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 7 - 12 triệu + Phụ cấp tăng ca.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 8 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Nhân viên Chăm sóc khách hàng (Customer Service)</h4>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Trực chat phản hồi khách trên sàn; tư vấn chốt đơn, xử lý đổi trả/hoàn tiền và đánh giá.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Giao tiếp tốt, kiên nhẫn, gõ máy tính nhanh.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 8 - 12 triệu + Thưởng tỷ lệ phản hồi chat.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 9 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">Chuyên viên E-commerce Xuyên biên giới</h4>
-                        <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full text-xs font-bold uppercase">Amazon/Etsy</span>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Quản lý gian hàng Amazon/Etsy; nghiên cứu thị trường quốc tế; chạy PPC và logistics quốc tế.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Tiếng Anh tốt, am hiểu luật thương mại quốc tế.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 12 - 25 triệu + Thưởng doanh số/ngoại tệ.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-                <!-- Job 10 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-pink-50 hover:border-[#FF6B9E] transition-all group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h4 class="text-xl font-bold text-[#001e40] group-hover:text-[#FF6B9E] transition-colors uppercase">E-commerce Content Creator (Short-form Video)</h4>
-                    </div>
-                    <div class="space-y-4 mb-6 text-sm">
-                        <p><strong class="text-[#001e40]">Mô tả:</strong> Sáng tạo kịch bản, quay dựng video ngắn; thiết kế banner; ứng dụng AI tối ưu quy trình sản xuất.</p>
-                        <p><strong class="text-[#001e40]">Yêu cầu:</strong> Sử dụng tốt CapCut, Premiere, Canva. Gu thẩm mỹ tốt.</p>
-                        <p><strong class="text-[#001e40]">Quyền lợi:</strong> Lương 10 - 18 triệu. Thiết bị quay chụp hiện đại.</p>
-                    </div>
-                    <div class="pt-6 border-t border-gray-100 text-right">
-                        <a href="#contact" class="bg-[#001e40] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#FF6B9E] transition-all inline-block">Ứng tuyển</a>
-                    </div>
-                </div>
-            </div>
+      <section class="section" id="vision">
+        <div class="vision-board">
+          <article class="vision-main">
+            <p class="eyebrow">Tầm nhìn</p>
+            <h2>Trở thành doanh nghiệp thương mại điện tử số 1 trong lĩnh vực Mẹ & Bé và Người cao tuổi tại Việt Nam trong 10 năm tới.</h2>
+          </article>
+          <article class="card">
+            <h3>Sứ mệnh</h3>
+            <p>Mang đến cho khách hàng, đối tác và nhân viên những sản phẩm, dịch vụ chất lượng vượt trội bằng sự tử tế.</p>
+          </article>
+          <article class="card">
+            <h3>Triết lý kinh doanh</h3>
+            <p>Con người là nguồn vốn quý giá nhất. Khách hàng là tài sản quan trọng nhất. Dữ liệu và hệ thống là nền tảng cho mọi quyết định.</p>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-32 bg-[#f9f9fe]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#001e40] mb-6 tracking-tight">Hệ sinh thái giải pháp EAZ</h2>
-                <p class="text-lg text-on-surface-variant">Chúng tôi đồng hành cùng doanh nghiệp từ bước ý tưởng đến khi sản phẩm chiếm lĩnh thị trường online.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Solution 1: E-commerce -->
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group">
-                    <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#FF6B9E] transition-colors duration-300">
-                        <span class="material-symbols-outlined text-[#FF6B9E] text-3xl group-hover:text-white">shopping_cart</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-[#001e40] mb-4">Giải pháp TMĐT</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6">Tối ưu gian hàng đa sàn, xây dựng chiến lược Digital Marketing đánh đúng tâm lý người tiêu dùng Mẹ & Bé.</p>
-                    <a href="#contact" class="text-[#FF6B9E] font-bold inline-flex items-center gap-2 group-hover:gap-4 transition-all">Tìm hiểu giải pháp <span class="material-symbols-outlined">east</span></a>
-                </div>
-                <!-- Solution 2: Production -->
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#001e40] transition-colors duration-300">
-                        <span class="material-symbols-outlined text-[#001e40] text-3xl group-hover:text-white">factory</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-[#001e40] mb-4">Sản xuất Độc quyền</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6">Liên kết cùng XNK Green Star sản xuất các dòng bỉm, băng vệ sinh quần tiêu chuẩn quốc tế.</p>
-                    <a href="#contact" class="text-[#001e40] font-bold inline-flex items-center gap-2 group-hover:gap-4 transition-all">Tìm hiểu quy trình <span class="material-symbols-outlined">east</span></a>
-                </div>
-                <!-- Solution 3: Logistics -->
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group">
-                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-orange-500 transition-colors duration-300">
-                        <span class="material-symbols-outlined text-orange-500 text-3xl group-hover:text-white">local_shipping</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-[#001e40] mb-4">Vận hành & Phân phối</h3>
-                    <p class="text-on-surface-variant leading-relaxed mb-6">Hệ thống kho bãi thông minh, đảm bảo giao nhận nhanh chóng và chất lượng nguyên vẹn.</p>
-                    <a href="#contact" class="text-orange-500 font-bold inline-flex items-center gap-2 group-hover:gap-4 transition-all">Xem mạng lưới <span class="material-symbols-outlined">east</span></a>
-                </div>
-            </div>
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Giá trị cốt lõi</p>
+          <h2>Ba nền tảng trong cách EAZ tạo ra giá trị</h2>
         </div>
-    </section>
-
-    <!-- Portfolio Section (Brands) -->
-    <section id="portfolio" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#001e40] mb-4 tracking-tight">Thương hiệu chiến lược</h2>
-                <p class="text-lg text-on-surface-variant">Những sản phẩm được tin dùng và bảo chứng bởi EAZ Vietnam & Green Star XNK.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Gooby Premium -->
-                <div class="group">
-                    <div class="relative h-[400px] rounded-[3rem] overflow-hidden mb-6 shadow-lg">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="assets/gooby_premium.png" alt="Gooby Premium"/>
-                    </div>
-                    <h4 class="text-2xl font-bold text-[#001e40] mb-2">Gooby Premium</h4>
-                    <p class="text-on-surface-variant text-sm">Dòng tã bỉm cao cấp, tiêu chuẩn Hàn Quốc vượt trội dành cho làn da nhạy cảm.</p>
-                </div>
-                <!-- Rouya -->
-                <div class="group">
-                    <div class="relative h-[400px] rounded-[3rem] overflow-hidden mb-6 shadow-lg">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="assets/rouya.png" alt="Bỉm Rouya Vịt Vàng"/>
-                    </div>
-                    <h4 class="text-2xl font-bold text-[#001e40] mb-2">Bỉm Rouya (Vịt Vàng)</h4>
-                    <p class="text-on-surface-variant text-sm">Thương hiệu bỉm mới bùng nổ, phân phối và sản xuất độc quyền bởi Green Star XNK.</p>
-                </div>
-                <!-- Cohee -->
-                <div class="group">
-                    <div class="relative h-[400px] rounded-[3rem] overflow-hidden mb-6 shadow-lg">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="assets/cohee.png" alt="Băng vệ sinh Cohee"/>
-                    </div>
-                    <h4 class="text-2xl font-bold text-[#001e40] mb-2">Cohee</h4>
-                    <p class="text-on-surface-variant text-sm">Băng vệ sinh quần thế hệ mới, giải pháp chăm sóc vượt trội cho phụ nữ hiện đại.</p>
-                </div>
-            </div>
+        <div class="cards three">
+          <article class="card accent-blue">
+            <h3>Tư duy dịch vụ chuyên nghiệp</h3>
+            <p>Luôn đặt lợi ích của khách hàng và đối tác làm trung tâm trong mọi quyết định vận hành.</p>
+          </article>
+          <article class="card accent-pink">
+            <h3>Sản phẩm chất lượng cao</h3>
+            <p>Được thị trường và người tiêu dùng tin tưởng, kiểm chứng qua hiệu quả sử dụng thực tế.</p>
+          </article>
+          <article class="card accent-green">
+            <h3>Năng lực chuyên môn thực chiến</h3>
+            <p>Không ngừng học hỏi, phát triển và nâng cao năng lực từ dữ liệu, hệ thống và trải nghiệm thị trường.</p>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 bg-[#001e40] text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Hợp tác kinh doanh <br/><span class="text-[#FF6B9E]">Cùng EAZ Vietnam</span></h2>
-                    <p class="text-xl text-white/70 mb-12">Chúng tôi luôn sẵn sàng lắng nghe và kết nối cùng các đối tác để tạo ra những giá trị mới.</p>
-                    <div class="space-y-8">
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
-                                <span class="material-symbols-outlined text-[#FF6B9E]">mail</span>
-                            </div>
-                            <div>
-                                <div class="text-sm text-white/50 font-semibold uppercase tracking-widest">Email liên hệ</div>
-                                <div class="text-xl font-bold">contact@eaz.vn</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
-                                <span class="material-symbols-outlined text-[#FF6B9E]">call</span>
-                            </div>
-                            <div>
-                                <div class="text-sm text-white/50 font-semibold uppercase tracking-widest">Hotline tư vấn</div>
-                                <div class="text-xl font-bold">0868 123 456</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
-                                <span class="material-symbols-outlined text-[#FF6B9E]">location_on</span>
-                            </div>
-                            <div>
-                                <div class="text-sm text-white/50 font-semibold uppercase tracking-widest">Địa chỉ trụ sở</div>
-                                <div class="text-xl font-bold">Toà nhà EAZ Việt Nam, phường An Khánh, Hồ Chí Minh</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl">
-                    <h3 class="text-3xl font-bold text-[#001e40] mb-8 text-center lg:text-left">Gửi yêu cầu hợp tác</h3>
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" placeholder="Tên doanh nghiệp / Đối tác" class="w-full px-6 py-4 rounded-2xl bg-gray-100 border-none text-[#001e40] placeholder-gray-400 focus:ring-2 focus:ring-[#FF6B9E] transition-all outline-none"/>
-                            <input type="email" placeholder="Email" class="w-full px-6 py-4 rounded-2xl bg-gray-100 border-none text-[#001e40] placeholder-gray-400 focus:ring-2 focus:ring-[#FF6B9E] transition-all outline-none"/>
-                        </div>
-                        <textarea rows="4" placeholder="Bạn quan tâm đến giải pháp nào của chúng tôi?" class="w-full px-6 py-4 rounded-2xl bg-gray-100 border-none text-[#001e40] placeholder-gray-400 focus:ring-2 focus:ring-[#FF6B9E] transition-all outline-none"></textarea>
-                        <button class="w-full bg-[#FF6B9E] text-white py-5 rounded-2xl font-bold text-lg hover:bg-pink-600 transition-all shadow-lg hover:shadow-pink-100">Gửi tin nhắn</button>
-                    </form>
-                </div>
-            </div>
+      <div class="band">
+        <section class="section" id="brands">
+          <div class="section-heading">
+            <p class="eyebrow">Danh mục thương hiệu</p>
+            <h2>Các thương hiệu EAZ đang phân phối và phát triển</h2>
+            <p>
+              Hệ sinh thái hiện tập trung vào những sản phẩm thiết yếu, có nhu cầu bền vững và yêu cầu cao về chất lượng.
+            </p>
+          </div>
+          <div class="brand-grid">
+            <article class="card brand-card">
+              <img src="./assets/gooby_premium.png" alt="Gooby - Chuyên gia bỉm đêm" />
+              <div><h3>Gooby</h3><p>Chuyên gia bỉm đêm, tập trung vào trải nghiệm chăm sóc bé an tâm hơn cho gia đình Việt.</p></div>
+            </article>
+            <article class="card brand-card">
+              <img src="./assets/rouya.png" alt="Rouya - Khoa học cho làn da nhạy cảm" />
+              <div><h3>Rouya</h3><p>Khoa học cho làn da nhạy cảm, hướng tới nhóm khách hàng cần sản phẩm chăm sóc dịu nhẹ.</p></div>
+            </article>
+            <article class="card brand-card">
+              <img src="./assets/cohee.png" alt="Cohee - Thế hệ mới, chuẩn mực mới" />
+              <div><h3>Cohee</h3><p>Thế hệ mới, chuẩn mực mới, phát triển theo hướng hiện đại, hiệu quả và dễ tiếp cận.</p></div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="section culture" id="culture">
+        <div class="culture-note">
+          <p class="eyebrow">Văn hóa EAZ</p>
+          <h2>Gắn kết • Chính trực • Quyết liệt • Sáng tạo</h2>
+          <p>
+            EAZ xây dựng môi trường làm việc cởi mở, đề cao tinh thần trách nhiệm, khuyến khích đổi mới và không ngừng
+            phát triển để cùng nhau tạo nên những giá trị bền vững.
+          </p>
         </div>
-    </section>
-</main>
-
-<!-- Footer -->
-<footer class="w-full py-16 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="w-8 h-8 bg-[#FF6B9E] rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-md">E</div>
-                    <div class="text-xl font-bold text-[#001e40]">EAZ Vietnam</div>
-                </div>
-                <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Hub giải pháp thương mại điện tử chuyên biệt ngành hàng Mẹ & Bé hàng đầu Việt Nam.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#FF6B9E] hover:text-white transition-all"><span class="material-symbols-outlined text-xl">share</span></a>
-                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#FF6B9E] hover:text-white transition-all"><span class="material-symbols-outlined text-xl">public</span></a>
-                </div>
-            </div>
-            <div>
-                <h6 class="font-bold text-[#001e40] mb-6 uppercase tracking-widest text-xs">Menu</h6>
-                <ul class="space-y-4">
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#about">Câu chuyện EAZ</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#jobs">Tuyển dụng</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#services">Giải pháp TMĐT</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#portfolio">Nhãn hàng</a></li>
-                </ul>
-            </div>
-            <div>
-                <h6 class="font-bold text-[#001e40] mb-6 uppercase tracking-widest text-xs">Đối tác chiến lược</h6>
-                <ul class="space-y-4">
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#">Green Star XNK</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#">Gooby Premium (Korea)</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#">Rouya Family</a></li>
-                    <li><a class="text-on-surface-variant hover:text-[#FF6B9E] transition-colors text-sm" href="#">Cohee Beauty</a></li>
-                </ul>
-            </div>
-            <div>
-                <h6 class="font-bold text-[#001e40] mb-6 uppercase tracking-widest text-xs">Trụ sở chính</h6>
-                <p class="text-on-surface-variant text-sm mb-4">Toà nhà EAZ Việt Nam, phường An Khánh, TP. Thủ Đức, Hồ Chí Minh</p>
-                <div class="flex items-center gap-2 text-[#FF6B9E] font-bold">
-                    <span class="material-symbols-outlined text-sm">schedule</span>
-                    <span class="text-xs">08:00 - 18:00 (T2 - T7)</span>
-                </div>
-            </div>
+        <div class="cards">
+          <article class="card"><h3>Gắn kết</h3><p>Làm việc cùng nhau trên tinh thần hỗ trợ, minh bạch và cùng chịu trách nhiệm với kết quả.</p></article>
+          <article class="card"><h3>Chính trực</h3><p>Làm đúng, nói thật, giữ cam kết với khách hàng, đối tác và đồng đội.</p></article>
+          <article class="card"><h3>Quyết liệt</h3><p>Chủ động hành động, theo sát mục tiêu và giải quyết vấn đề đến nơi đến chốn.</p></article>
+          <article class="card"><h3>Sáng tạo</h3><p>Liên tục cải tiến cách làm, tận dụng dữ liệu và công nghệ để tăng tốc tăng trưởng.</p></article>
         </div>
-        <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-on-surface-variant text-sm">© 2024 EAZ Vietnam. All rights reserved. Partner of Green Star XNK.</div>
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-[#FF6B9E]">favorite</span>
-                <span class="text-sm font-semibold">Kiến tạo tương lai mẹ và bé Việt</span>
-            </div>
+      </section>
+
+      <div class="band">
+        <section class="section" id="jobs">
+          <div class="section-heading">
+            <p class="eyebrow">Cơ hội nghề nghiệp</p>
+            <h2>Gia nhập đội ngũ xây dựng tương lai thương mại điện tử Việt Nam</h2>
+            <p>
+              EAZ tìm kiếm những nhân sự thực chiến, yêu thích thương mại điện tử, dữ liệu, vận hành và phát triển thương hiệu.
+            </p>
+          </div>
+          <div class="jobs">
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Operations</span><span class="chip">Shopee/Lazada/TikTok Shop</span></div>
+                <h3>Nhân viên Vận hành Sàn</h3>
+              </div>
+              <ul>
+                <li>Quản lý gian hàng, đăng sản phẩm, tối ưu SEO sàn và chương trình khuyến mãi.</li>
+                <li>Theo dõi chỉ số vận hành, phối hợp xử lý tồn kho, đơn hàng và trải nghiệm khách hàng.</li>
+                <li>Phù hợp với ứng viên có kinh nghiệm Seller Center hoặc tư duy vận hành tốt.</li>
+              </ul>
+            </article>
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Marketing</span><span class="chip">Ads</span></div>
+                <h3>Chuyên viên Marketing Sàn</h3>
+              </div>
+              <ul>
+                <li>Lập kế hoạch và triển khai quảng cáo nội sàn, tối ưu ROAS và tỷ lệ chuyển đổi.</li>
+                <li>Phân tích dữ liệu chiến dịch, thử nghiệm thông điệp và tối ưu ngân sách theo mục tiêu.</li>
+                <li>Ưu tiên ứng viên hiểu thuật toán sàn và có tư duy số liệu.</li>
+              </ul>
+            </article>
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Livestream</span><span class="chip">Sales</span></div>
+                <h3>Live Streamer / Host Livestream</h3>
+              </div>
+              <ul>
+                <li>Livestream bán hàng trên TikTok Shop, Shopee và các kênh trọng điểm.</li>
+                <li>Giới thiệu sản phẩm, tương tác với khách hàng và phối hợp tăng tỷ lệ chốt đơn.</li>
+                <li>Phù hợp với người tự tin trước ống kính, năng lượng cao và giao tiếp tốt.</li>
+              </ul>
+            </article>
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Affiliate</span><span class="chip">KOC/KOL</span></div>
+                <h3>Chuyên viên Booking KOL/KOC</h3>
+              </div>
+              <ul>
+                <li>Tìm kiếm, đàm phán và quản lý mạng lưới creator cho chiến dịch affiliate.</li>
+                <li>Theo dõi hiệu quả hợp tác, đề xuất tối ưu nội dung, hoa hồng và lịch triển khai.</li>
+                <li>Ưu tiên ứng viên có quan hệ creator và kỹ năng đàm phán tốt.</li>
+              </ul>
+            </article>
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Data</span><span class="chip">BI</span></div>
+                <h3>Chuyên viên Phân tích Dữ liệu</h3>
+              </div>
+              <ul>
+                <li>Thu thập, làm sạch và phân tích dữ liệu omni-channel phục vụ ra quyết định.</li>
+                <li>Xây dựng báo cáo doanh thu, hành vi khách hàng, hiệu quả chiến dịch và dự báo xu hướng.</li>
+                <li>Ưu tiên ứng viên thành thạo Excel, SQL, Power BI hoặc Tableau.</li>
+              </ul>
+            </article>
+            <article class="job-card">
+              <div>
+                <div class="job-meta"><span class="chip">Growth</span><span class="chip">Brand</span></div>
+                <h3>Ứng tuyển mở</h3>
+              </div>
+              <ul>
+                <li>Dành cho ứng viên muốn phát triển cùng EAZ nhưng chưa thấy vị trí phù hợp.</li>
+                <li>Gửi thông tin năng lực, kinh nghiệm và định hướng để đội ngũ nhân sự kết nối khi có cơ hội.</li>
+                <li>Phù hợp với nhân sự chủ động, ham học hỏi và thích môi trường tăng trưởng nhanh.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Lộ trình phát triển</p>
+          <h2>Ba cột mốc EAZ hướng tới</h2>
         </div>
-    </div>
-    <!-- Chatbot Button -->
-    <div id="chat-button" class="fixed bottom-8 right-8 z-[100] cursor-pointer group">
-        <div class="w-16 h-16 bg-[#FF6B9E] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-            <span class="material-symbols-outlined text-white text-3xl">chat</span>
+        <div class="timeline">
+          <article>
+            <span>2026</span>
+            <h3>Đối tác TMĐT chiến lược</h3>
+            <p>Trở thành đối tác thương mại điện tử chiến lược toàn diện cho doanh nghiệp.</p>
+          </article>
+          <article>
+            <span>2027</span>
+            <h3>Mở rộng phân phối độc quyền</h3>
+            <p>Mở rộng hợp tác phân phối độc quyền trên các nền tảng thương mại điện tử.</p>
+          </article>
+          <article>
+            <span>2028</span>
+            <h3>Phát triển thương hiệu riêng</h3>
+            <p>Phát triển thương hiệu riêng, mở rộng hệ sinh thái kinh doanh trong nước và quốc tế.</p>
+          </article>
         </div>
-        <div class="absolute -top-12 right-0 bg-white px-4 py-2 rounded-xl shadow-lg border border-pink-50 text-[#001e40] text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Chat cùng EAZ Assistant!</div>
-    </div>
+      </section>
 
-    <!-- Chat Window -->
-    <div id="chat-window" class="fixed bottom-28 right-8 w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] bg-white rounded-[2.5rem] shadow-[0_24px_48px_-8px_rgba(0,30,64,0.3)] z-[100] flex flex-col overflow-hidden transition-all duration-500 translate-y-10 opacity-0 pointer-events-none scale-95 origin-bottom-right">
-        <!-- Chat Header -->
-        <div class="p-6 bg-gradient-to-r from-[#001e40] to-[#1f477b] text-white flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 shrink-0">
-                    <img src="assets/assistant_avatar.png" alt="assistant" class="w-full h-full object-cover"/>
-                </div>
-                <div>
-                    <div class="font-bold">EAZ Assistant</div>
-                    <div class="flex items-center gap-1.5">
-                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                        <span class="text-[10px] text-white/70 uppercase tracking-widest font-bold">Trực tuyến</span>
-                    </div>
-                </div>
-            </div>
-            <button id="close-chat" class="hover:bg-white/10 p-2 rounded-full transition-colors">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
+      <div class="band">
+        <section class="section contact" id="contact">
+          <div>
+            <p class="eyebrow">Liên hệ ứng tuyển</p>
+            <h2>Đồng hành cùng tương lai thương mại điện tử Việt Nam</h2>
+            <p>
+              Nếu bạn quan tâm đến cơ hội làm việc tại EAZ, hãy gửi thông tin ứng tuyển. Bộ phận nhân sự sẽ liên hệ khi
+              có vị trí phù hợp.
+            </p>
+          </div>
+          <form class="contact-panel form-grid" id="apply-form">
+            <label>
+              Họ và tên
+              <input name="name" type="text" placeholder="Nguyễn Văn A" required />
+            </label>
+            <label>
+              Số điện thoại
+              <input name="phone" type="tel" placeholder="0988777666" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" placeholder="ungvien@email.com" />
+            </label>
+            <label>
+              Vị trí quan tâm
+              <select name="job">
+                <option>Nhân viên Vận hành Sàn</option>
+                <option>Chuyên viên Marketing Sàn</option>
+                <option>Live Streamer / Host Livestream</option>
+                <option>Chuyên viên Booking KOL/KOC</option>
+                <option>Chuyên viên Phân tích Dữ liệu</option>
+                <option>Ứng tuyển mở</option>
+              </select>
+            </label>
+            <label>
+              Ghi chú
+              <textarea name="message" rows="4" placeholder="Kinh nghiệm nổi bật, link CV hoặc thời gian có thể trao đổi"></textarea>
+            </label>
+            <button class="button primary" type="submit">Gửi thông tin ứng tuyển</button>
+          </form>
+        </section>
+      </div>
+    </main>
 
-        <!-- Lead Collection Form -->
-        <div id="leadForm" class="flex-1 flex flex-col items-center p-8 bg-gray-50/50 overflow-y-auto">
-            <div class="text-center mb-6 mt-4">
-                <div class="w-16 h-16 bg-[#FF6B9E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span class="material-symbols-outlined text-[#FF6B9E] text-3xl">support_agent</span>
-                </div>
-                <h3 class="text-lg font-bold text-[#001e40] mb-2">Kết nối với chúng tôi</h3>
-                <p class="text-xs text-gray-500 px-2 leading-relaxed">Vui lòng để lại thông tin để EAZ Assistant có thể hỗ trợ và tư vấn bạn chu đáo nhất.</p>
-            </div>
-            
-            <form id="pre-chat-form" class="w-full space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">Họ và Tên *</label>
-                    <input type="text" id="customerName" required placeholder="VD: Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-sm text-[#001e40] placeholder-gray-300 focus:ring-2 focus:ring-[#FF6B9E]/50 focus:border-[#FF6B9E] outline-none transition-all shadow-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">Số điện thoại *</label>
-                    <input type="tel" id="customerPhone" required placeholder="VD: 0988777666" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-sm text-[#001e40] placeholder-gray-300 focus:ring-2 focus:ring-[#FF6B9E]/50 focus:border-[#FF6B9E] outline-none transition-all shadow-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">Email (Tuỳ chọn)</label>
-                    <input type="email" id="customerEmail" placeholder="VD: ungvien@gmail.com" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-sm text-[#001e40] placeholder-gray-300 focus:ring-2 focus:ring-[#FF6B9E]/50 focus:border-[#FF6B9E] outline-none transition-all shadow-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">Vị trí (Tuỳ chọn)</label>
-                    <input type="text" id="customerJob" placeholder="VD: Digital Marketing" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-sm text-[#001e40] placeholder-gray-300 focus:ring-2 focus:ring-[#FF6B9E]/50 focus:border-[#FF6B9E] outline-none transition-all shadow-sm">
-                </div>
-                <button type="submit" class="w-full bg-[#FF6B9E] text-white font-bold py-3.5 rounded-xl hover:bg-pink-600 transition-all shadow-lg shadow-pink-200/50 hover:shadow-pink-300 active:scale-[0.98] mt-4">
-                    Bắt đầu trò chuyện
-                </button>
-            </form>
-            <div class="mt-6 text-center">
-                <span class="text-[10px] text-gray-400 font-medium">Powered by CES Technology</span>
-            </div>
-        </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© EAZ Việt Nam</span>
+        <span>eCommerce from A to Z</span>
+      </div>
+    </footer>
 
-        <!-- Chat Container (Hidden Initially) -->
-        <div id="chatContainer" class="flex-1 flex flex-col hidden overflow-hidden">
-            <!-- Chat Body -->
-            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50/50">
-                <!-- Welcome Message -->
-                <div class="flex gap-3">
-                    <div class="w-8 h-8 shrink-0 rounded-full overflow-hidden border border-gray-100 shadow-sm">
-                        <img src="assets/assistant_avatar.png" alt="assistant" class="w-full h-full object-cover"/>
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-pink-50 max-w-[80%] text-sm text-[#001e40] leading-relaxed">
-                        Chào bạn! EAZ Assistant có thể giúp gì cho quá trình phát triển kinh doanh hoặc ứng tuyển của bạn hôm nay?
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Chat Input -->
-            <div class="p-6 bg-white border-t border-gray-100 shrink-0">
-                <form id="chat-form" class="relative">
-                    <input id="chat-input" type="text" placeholder="Nhập tin nhắn..." class="w-full pl-6 pr-14 py-4 rounded-2xl bg-gray-100 border-none text-[#001e40] placeholder-gray-400 focus:ring-2 focus:ring-[#FF6B9E] transition-all outline-none" autocomplete="off"/>
-                    <button type="submit" class="absolute right-2 top-2 w-10 h-10 bg-[#FF6B9E] text-white rounded-xl flex items-center justify-center hover:bg-pink-600 transition-all shadow-lg shadow-pink-100">
-                        <span class="material-symbols-outlined text-lg">send</span>
-                    </button>
-                </form>
-                <div class="mt-3 text-center">
-                    <span class="text-[10px] text-gray-400 font-medium">Powered by Bản sắc Việt</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const navLinks = document.querySelector(".nav-links");
+      const applyForm = document.querySelector("#apply-form");
+      const scriptUrl =
+        "https://script.google.com/macros/s/AKfycbzBjNIdd3G4ooR4OVz_641z214_kBus8PmtuPjl6Ik9EOlcuQwKfK-cHBDU3p-XSa5I2w/exec";
 
-    <!-- Chatbot Logic -->
-    <script type="module">
-        import OpenAI from "https://esm.sh/openai@4.28.0";
-        import { marked } from "https://esm.sh/marked@12.0.1";
+      menuButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
 
-        const chatBtn = document.getElementById('chat-button');
-        const chatWin = document.getElementById('chat-window');
-        const closeBtn = document.getElementById('close-chat');
-        const chatForm = document.getElementById('chat-form');
-        const chatInput = document.getElementById('chat-input');
-        const messagesContainer = document.getElementById('chat-messages');
-
-        // Toggle Chat Window
-        chatBtn.addEventListener('click', () => {
-            chatWin.classList.toggle('opacity-0');
-            chatWin.classList.toggle('pointer-events-none');
-            chatWin.classList.toggle('translate-y-10');
-            chatWin.classList.toggle('scale-95');
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
         });
+      });
 
-        closeBtn.addEventListener('click', () => {
-            chatWin.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10', 'scale-95');
-        });
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        window.setTimeout(() => toast.remove(), 2400);
+      }
 
-        // Initialize OpenAI Client
-        const openai = new OpenAI({
-            baseURL: "https://9router.vuhai.io.vn/v1",
-            apiKey: "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f",
-            dangerouslyAllowBrowser: true // Essential for client-side use
-        });
+      applyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(applyForm);
+        const payload = Object.fromEntries(formData.entries());
+        const button = applyForm.querySelector("button");
 
-        const preChatForm = document.getElementById('pre-chat-form');
-        const leadFormDiv = document.getElementById('leadForm');
-        const chatContainerWrapper = document.getElementById('chatContainer');
-        
-        preChatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('customerName').value.trim();
-            const phone = document.getElementById('customerPhone').value.trim();
-            const email = document.getElementById('customerEmail').value.trim();
-            const job = document.getElementById('customerJob').value.trim();
+        button.disabled = true;
+        button.textContent = "Đang gửi...";
 
-            if (!name || !phone) return;
-
-            // Đẩy signal lên Google Apps Script ngay lập tức
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({
-                    name: name,
-                    phone: "'" + phone,
-                    email: email,
-                    job_position: job,
-                    source: window.location.href,
-                    sessionId: AI_CHAT_SESSION_ID,
-                    chatHistory: "--- Khách điền Form Pre-chat ---",
-                    timestamp: new Date().toLocaleString('vi-VN')
-                })
-            });
-
-            // Gắn thông tin khách hàng vào System Prompt để AI xưng hô tự nhiên
-            chatHistory[0].content += `\nLưu ý quan trọng ngay lúc này: Khách hàng đang trò chuyện với bạn tên là ${name}, có Số điện thoại là ${phone}` + (job ? `, đang quan tâm vị trí ${job}` : '') + `. Hãy chủ động xưng hô thân mật (ví dụ: Chào anh/chị ${name}) và tập trung vào vị trí họ cần hỏi.`;
-
-            // Ẩn form, hiện khung chat
-            leadFormDiv.classList.add('hidden');
-            chatContainerWrapper.classList.remove('hidden');
-            chatContainerWrapper.classList.add('flex');
-        });
-
-        let chatHistory = [
-            { role: "system", content: "Bạn là EAZ Assistant, trợ lý AI thông minh của EAZ Vietnam - Hub giải pháp TMĐT Mẹ & Bé số 1. Bạn cung cấp thông tin về công ty, các thương hiệu (Gooby Premium, Rouya, Cohee) và các cơ hội nghề nghiệp. Hãy trả lời thân thiện, chuyên nghiệp and tạo niềm tin.\n\nQuy tắc đặc biệt: Trong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm một đoạn mã JSON vào cuối cùng của câu trả lời theo đúng định dạng sau:\n||LEAD_DATA: {\"name\": \"...\", \"phone\": \"...\", \"email\": \"...\", \"job_position\": \"...\"}||\nNếu thông tin nào chưa có, hãy để null. job_position là tên vị trí người dùng quan tâm ứng tuyển.\nTUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng." }
-        ];
-
-        const userAvatarSeed = Math.random().toString(36).substring(7);
-        const userAvatarUrl = `https://i.pravatar.cc/150?u=${userAvatarSeed}`;
-        const assistantAvatarUrl = `assets/assistant_avatar.png`;
-
-        // ============================================================
-        // HÀM BÓC TÁCH DỮ LIỆU LEAD TỪ CÂU TRẢ LỜI CỦA AI VÀ LƯU TRỮ
-        // ============================================================
-        
-        // URL của Google Apps Script Web App
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBjNIdd3G4ooR4OVz_641z214_kBus8PmtuPjl6Ik9EOlcuQwKfK-cHBDU3p-XSa5I2w/exec';
-        
-        // Tạo Session ID duy nhất cho mỗi phiên tải trang
-        const AI_CHAT_SESSION_ID = 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
-        
-        function processAIResponse(aiResponse, chatHistoryArray = []) {
-            const dataPattern = /\|\|LEAD_DATA:\s*(\{.*?\})\s*\|\|/;
-        
-            // Xây dựng lại Text Lịch sử Chat cho dễ đọc trên Google Sheets
-            let formattedHistory = "";
-            if (chatHistoryArray && chatHistoryArray.length > 0) {
-                formattedHistory = chatHistoryArray
-                    .filter(msg => msg.role !== 'system') // Không log lệnh hệ thống
-                    .map(msg => {
-                        let role = msg.role === 'user' ? 'Khách' : 'AI';
-                        // Lọc bỏ tag ẩn trước khi lưu vào file GG Sheets
-                        let content = msg.content.replace(dataPattern, "").trim();
-                        return `${role}: ${content}`;
-                    }).join('\n\n');
-            }
-        
-            if (aiResponse.includes("||LEAD_DATA:")) {
-                const match = aiResponse.match(dataPattern);
-        
-                if (match && match[1]) {
-                    try {
-                        const leadData = JSON.parse(match[1]);
-                        console.log("✅ Dữ liệu khách hàng bóc được:", leadData);
-        
-                        // Gửi dữ liệu đồng bộ
-                        if (leadData.name || leadData.phone || leadData.email) {
-                            sendLeadToGoogleSheets(leadData, formattedHistory);
-                        }
-                    } catch (error) {
-                        console.error("❌ Lỗi parse JSON từ AI:", error);
-                    }
-                }
-                aiResponse = aiResponse.replace(dataPattern, "").trim();
-            }
-            return aiResponse;
+        try {
+          await fetch(scriptUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              name: payload.name,
+              phone: "'" + payload.phone,
+              email: payload.email,
+              job_position: payload.job,
+              message: payload.message,
+              source: window.location.href,
+              timestamp: new Date().toLocaleString("vi-VN"),
+            }),
+          });
+          applyForm.reset();
+          showToast("Đã ghi nhận thông tin ứng tuyển. EAZ sẽ liên hệ lại khi phù hợp.");
+        } catch (error) {
+          showToast("Chưa gửi được thông tin. Vui lòng thử lại sau.");
+        } finally {
+          button.disabled = false;
+          button.textContent = "Gửi thông tin ứng tuyển";
         }
-        
-        async function sendLeadToGoogleSheets(leadData, chatHistoryText) {
-            try {
-                await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify({
-                        name: leadData.name || '',
-                        phone: leadData.phone ? "'" + leadData.phone : '',
-                        email: leadData.email || '',
-                        source: window.location.href,
-                        sessionId: AI_CHAT_SESSION_ID,
-                        chatHistory: chatHistoryText,
-                        job_position: leadData.job_position || '',
-                        timestamp: new Date().toLocaleString('vi-VN')
-                    })
-                });
-                console.log("📤 Đã đồng bộ dữ liệu vào Google Sheets!");
-            } catch (err) {
-                console.warn("⚠️ Không gửi được dữ liệu lead:", err);
-            }
-        }
-
-        function addMessage(role, text) {
-            const div = document.createElement('div');
-            div.className = `flex gap-3 ${role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`;
-            
-            const avatarUrl = role === 'user' ? userAvatarUrl : assistantAvatarUrl;
-            const msgBg = role === 'user' 
-                ? 'bg-gradient-to-br from-[#001e40] to-[#1a365d] text-white shadow-md' 
-                : 'bg-white text-[#001e40] border border-pink-50 shadow-sm';
-            const msgRadius = role === 'user' ? 'rounded-2xl rounded-tr-sm' : 'rounded-2xl rounded-tl-sm';
-
-            const parsedText = role === 'assistant' ? marked.parse(text) : text;
-            const proseClass = role === 'assistant' 
-                ? 'prose prose-sm max-w-none text-[#001e40] prose-p:leading-relaxed prose-a:text-[#FF6B9E] prose-p:my-1 prose-ul:my-1 prose-li:my-0' 
-                : 'whitespace-pre-wrap break-words';
-
-            div.innerHTML = `
-                <div class="w-8 h-8 shrink-0 rounded-full overflow-hidden border border-gray-100 shadow-sm">
-                    <img src="${avatarUrl}" alt="${role}" class="w-full h-full object-cover"/>
-                </div>
-                <div class="${msgBg} px-4 py-3 ${msgRadius} max-w-[80%] text-sm leading-relaxed overflow-hidden">
-                    <div class="${proseClass}">${parsedText}</div>
-                </div>
-            `;
-            messagesContainer.appendChild(div);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function showTyping() {
-            const div = document.createElement('div');
-            div.id = 'typing-indicator';
-            div.className = 'flex gap-3';
-            div.innerHTML = `
-                <div class="w-8 h-8 shrink-0 rounded-full overflow-hidden border border-gray-100 shadow-sm">
-                    <img src="assets/assistant_avatar.png" alt="assistant" class="w-full h-full object-cover"/>
-                </div>
-                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-pink-50 text-sm text-gray-400">
-                    <div class="flex gap-1">
-                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce"></div>
-                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-                        <div class="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.4s]"></div>
-                    </div>
-                </div>
-            `;
-            messagesContainer.appendChild(div);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            chatInput.value = '';
-            addMessage('user', message);
-            chatHistory.push({ role: "user", content: message });
-
-            showTyping();
-
-            try {
-                const response = await openai.chat.completions.create({
-                    model: "ces-chatbot-gpt-5.4",
-                    messages: chatHistory,
-                });
-
-                document.getElementById('typing-indicator')?.remove();
-
-                // Lấy phản hồi nguyên bản của AI (có thể bao gồm tag JSON ẩn)
-                let rawAiResponse = response.choices[0].message.content;
-                
-                // Xử lý bóc tách dữ liệu Lead, đẩy lên Google Sheets và xoá tag khỏi chuỗi
-                let cleanAiResponse = processAIResponse(rawAiResponse, chatHistory);
-
-                // Thêm tin nhắn sạch vào giao diện người dùng
-                addMessage('assistant', cleanAiResponse);
-
-                // Push tin gốc (có kèm tag nếu có) vào lịch sử để duy trì context JSON format cho lượt sau
-                chatHistory.push({ role: "assistant", content: rawAiResponse });
-            } catch (error) {
-                console.error("Chat Error:", error);
-                document.getElementById('typing-indicator')?.remove();
-                addMessage('assistant', "Xin lỗi, hiện tại tôi đang gặp sự cố kết nối. Vui lòng thử lại sau!");
-            }
-        });
+      });
     </script>
-</footer>
-</body></html>
+  </body>
+</html>
