@@ -3,816 +3,175 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EAZ Việt Nam | Tuyển dụng & Thương mại điện tử</title>
+    <title>EAZ Việt Nam | eCommerce from A to Z</title>
     <meta
       name="description"
-      content="EAZ Việt Nam - đối tác thương mại điện tử chiến lược toàn diện, đồng hành cùng doanh nghiệp trong xây dựng thương hiệu, phát triển doanh số và vận hành bán lẻ đa kênh."
+      content="EAZ Việt Nam - đối tác thương mại điện tử chiến lược toàn diện trong xây dựng thương hiệu, phát triển doanh số và vận hành bán lẻ đa kênh."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        color-scheme: light;
-        --ink: #172033;
-        --muted: #657086;
-        --line: #dfe5ee;
-        --bg: #f7f9fc;
-        --surface: #ffffff;
-        --primary: #0f356f;
-        --primary-2: #1554a0;
-        --pink: #f05b93;
-        --green: #17855f;
-        --amber: #f2a23a;
-        --soft-blue: #eaf2ff;
-        --soft-pink: #fff0f6;
-        --soft-green: #eaf8f3;
-        --shadow: 0 22px 60px rgba(23, 32, 51, 0.1);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        color: var(--ink);
-        background: var(--bg);
-        font-family: "Be Vietnam Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.6;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: rgba(255, 255, 255, 0.92);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(18px);
-      }
-
-      .nav {
-        width: min(1180px, calc(100% - 40px));
-        min-height: 72px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 800;
-      }
-
-      .brand-mark {
-        display: grid;
-        width: 44px;
-        height: 44px;
-        place-items: center;
-        border-radius: 8px;
-        color: #fff;
-        background: var(--primary);
-        box-shadow: 0 14px 30px rgba(15, 53, 111, 0.22);
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--muted);
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      .nav-links a {
-        padding: 9px 10px;
-        border-radius: 8px;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-        background: var(--soft-blue);
-      }
-
-      .nav-cta,
-      .button {
-        display: inline-flex;
-        min-height: 44px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        padding: 0 18px;
-        border: 0;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 800;
-      }
-
-      .nav-cta,
-      .button.primary {
-        color: #fff;
-        background: var(--primary);
-      }
-
-      .button.secondary {
-        color: var(--primary);
-        background: var(--soft-blue);
-      }
-
-      .menu-button {
-        display: none;
-        border: 1px solid var(--line);
-        background: var(--surface);
-      }
-
-      .hero {
-        width: min(1180px, calc(100% - 40px));
-        min-height: calc(100vh - 72px);
-        margin: 0 auto;
-        padding: 58px 0 52px;
-        display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-        gap: 44px;
-        align-items: center;
-      }
-
-      .eyebrow {
-        margin: 0 0 10px;
-        color: var(--pink);
-        font-size: 13px;
-        font-weight: 800;
-        letter-spacing: 0;
-        text-transform: uppercase;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        max-width: 760px;
-        margin-bottom: 22px;
-        color: var(--primary);
-        font-size: clamp(44px, 6vw, 78px);
-        line-height: 1.02;
-        letter-spacing: 0;
-      }
-
-      h2 {
-        margin-bottom: 14px;
-        color: var(--primary);
-        font-size: clamp(30px, 4vw, 48px);
-        line-height: 1.12;
-        letter-spacing: 0;
-      }
-
-      h3 {
-        margin-bottom: 8px;
-        color: var(--primary);
-        line-height: 1.28;
-      }
-
-      .hero-copy {
-        max-width: 680px;
-        margin-bottom: 28px;
-        color: var(--muted);
-        font-size: 19px;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .hero-media {
-        position: relative;
-      }
-
-      .hero-image {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-      }
-
-      .hero-image img {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-      }
-
-      .proof-panel {
-        position: absolute;
-        left: -28px;
-        bottom: 28px;
-        width: min(310px, calc(100% - 24px));
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: var(--shadow);
-      }
-
-      .proof-panel strong {
-        display: block;
-        color: var(--primary);
-        font-size: 26px;
-        line-height: 1.1;
-      }
-
-      .proof-panel span {
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .section {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-        padding: 78px 0;
-      }
-
-      .section-heading {
-        max-width: 760px;
-        margin-bottom: 28px;
-      }
-
-      .section-heading p:not(.eyebrow) {
-        color: var(--muted);
-        font-size: 17px;
-      }
-
-      .band {
-        width: 100%;
-        background: var(--surface);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .stat,
-      .card,
-      .job-card,
-      .contact-panel,
-      .timeline article {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
-      }
-
-      .stat {
-        padding: 22px;
-      }
-
-      .stat strong {
-        display: block;
-        color: var(--primary);
-        font-size: 28px;
-        line-height: 1.1;
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .split {
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
-        gap: 42px;
-        align-items: start;
-      }
-
-      .info-stack {
-        display: grid;
-        gap: 12px;
-      }
-
-      .info-row {
-        display: grid;
-        grid-template-columns: 180px minmax(0, 1fr);
-        gap: 18px;
-        padding: 16px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fbfcff;
-      }
-
-      .info-row strong {
-        color: var(--primary);
-      }
-
-      .cards {
-        display: grid;
-        gap: 14px;
-      }
-
-      .cards.three {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .cards.four {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .card {
-        padding: 22px;
-      }
-
-      .card p,
-      .job-card p,
-      .timeline p {
-        color: var(--muted);
-      }
-
-      .card.accent-blue {
-        background: var(--soft-blue);
-      }
-
-      .card.accent-pink {
-        background: var(--soft-pink);
-      }
-
-      .card.accent-green {
-        background: var(--soft-green);
-      }
-
-      .vision-board {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 14px;
-      }
-
-      .vision-main {
-        grid-row: span 2;
-        padding: 28px;
-        color: #fff;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      }
-
-      .vision-main .eyebrow,
-      .vision-main h2 {
-        color: #fff;
-      }
-
-      .brand-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .brand-card {
-        overflow: hidden;
-      }
-
-      .brand-card img {
-        width: 100%;
-        height: 210px;
-        object-fit: cover;
-        background: #f1f4f8;
-      }
-
-      .brand-card div {
-        padding: 20px;
-      }
-
-      .jobs {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .job-card {
-        display: grid;
-        gap: 14px;
-        padding: 22px;
-      }
-
-      .job-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .chip {
-        display: inline-flex;
-        min-height: 28px;
-        align-items: center;
-        border-radius: 999px;
-        padding: 0 10px;
-        color: var(--primary);
-        background: var(--soft-blue);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .job-card ul {
-        margin: 0;
-        padding-left: 20px;
-        color: var(--muted);
-      }
-
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .timeline article {
-        padding: 24px;
-      }
-
-      .timeline span {
-        color: var(--pink);
-        font-weight: 800;
-      }
-
-      .culture {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
-        gap: 22px;
-      }
-
-      .culture-note {
-        padding: 28px;
-        border-radius: 8px;
-        color: #fff;
-        background: var(--primary);
-      }
-
-      .culture-note h2 {
-        color: #fff;
-      }
-
-      .contact {
-        display: grid;
-        grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1fr);
-        gap: 30px;
-        align-items: start;
-      }
-
-      .contact-panel {
-        padding: 24px;
-        box-shadow: var(--shadow);
-      }
-
-      .form-grid {
-        display: grid;
-        gap: 14px;
-      }
-
-      label {
-        display: grid;
-        gap: 7px;
-        color: var(--muted);
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      input,
-      select,
-      textarea {
-        width: 100%;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fbfcff;
-        color: var(--ink);
-        font: inherit;
-        padding: 12px 13px;
-        outline: none;
-      }
-
-      textarea {
-        resize: vertical;
-      }
-
-      input:focus,
-      select:focus,
-      textarea:focus {
-        border-color: var(--primary-2);
-        box-shadow: 0 0 0 3px var(--soft-blue);
-      }
-
-      .footer {
-        padding: 28px 0 42px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-      }
-
-      .footer-inner {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      .toast {
-        position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 50;
-        max-width: min(360px, calc(100% - 36px));
-        padding: 13px 15px;
-        border-radius: 8px;
-        color: #fff;
-        background: var(--primary);
-        box-shadow: var(--shadow);
-      }
-
-      @media (max-width: 980px) {
-        .nav {
-          flex-wrap: wrap;
-          padding: 12px 0;
-        }
-
-        .menu-button {
-          display: inline-flex;
-        }
-
-        .nav-links {
-          display: none;
-          width: 100%;
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .nav-links.open {
-          display: flex;
-        }
-
-        .nav-cta {
-          display: none;
-        }
-
-        .hero,
-        .split,
-        .vision-board,
-        .culture,
-        .contact {
-          grid-template-columns: 1fr;
-        }
-
-        .proof-panel {
-          position: static;
-          width: 100%;
-          margin-top: 12px;
-        }
-
-        .stats,
-        .cards.three,
-        .cards.four,
-        .brand-grid,
-        .jobs,
-        .timeline {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 640px) {
-        .nav,
-        .hero,
-        .section,
-        .footer-inner {
-          width: min(100% - 24px, 1180px);
-        }
-
-        .hero {
-          min-height: auto;
-          padding-top: 36px;
-        }
-
-        h1 {
-          font-size: 42px;
-        }
-
-        .stats,
-        .cards.three,
-        .cards.four,
-        .brand-grid,
-        .jobs,
-        .timeline {
-          grid-template-columns: 1fr;
-        }
-
-        .info-row {
-          grid-template-columns: 1fr;
-          gap: 4px;
-        }
-
-        .footer-inner {
-          flex-direction: column;
-        }
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="topbar">
+    <header class="site-header">
       <nav class="nav" aria-label="Điều hướng chính">
-        <a class="brand" href="#home" aria-label="Về đầu trang">
+        <a class="brand" href="./index.html" aria-label="Trang chủ EAZ">
           <span class="brand-mark">EAZ</span>
           <span>EAZ Việt Nam</span>
         </a>
-        <button class="button menu-button" type="button" aria-expanded="false" aria-controls="nav-links">
-          Menu
-        </button>
-        <div class="nav-links" id="nav-links">
-          <a href="#about">Giới thiệu</a>
-          <a href="#vision">Định hướng</a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+        <div class="nav-links" id="main-nav">
+          <a href="#ecosystem">Hệ sinh thái</a>
+          <a href="#figures">Số liệu</a>
           <a href="#brands">Thương hiệu</a>
           <a href="#culture">Văn hóa</a>
-          <a href="#jobs">Tuyển dụng</a>
-          <a href="#contact">Liên hệ</a>
+          <a href="#roadmap">Lộ trình</a>
+          <a class="nav-pill" href="./recruitment.html">Tuyển dụng</a>
         </div>
-        <a class="nav-cta" href="#jobs">Gia nhập EAZ</a>
       </nav>
     </header>
 
-    <main id="home">
-      <section class="hero">
-        <div>
+    <main>
+      <section class="hero hero-infographic" id="ecosystem">
+        <div class="hero-copy">
           <p class="eyebrow">eCommerce from A to Z</p>
           <h1>Đối tác thương mại điện tử chiến lược toàn diện</h1>
-          <p class="hero-copy">
+          <p>
             EAZ Việt Nam đồng hành cùng doanh nghiệp trong xây dựng thương hiệu, phát triển doanh số và vận hành
-            hệ sinh thái bán lẻ đa kênh, với đội ngũ nòng cốt 10 năm kinh nghiệm thương mại điện tử chuyên sâu.
+            hệ sinh thái bán lẻ đa kênh cho ngành Mẹ & Bé, Chăm sóc gia đình và Người cao tuổi.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#about">Tìm hiểu EAZ</a>
-            <a class="button secondary" href="#jobs">Xem vị trí tuyển dụng</a>
+            <a class="button primary" href="#figures">Xem hệ sinh thái</a>
+            <a class="button secondary" href="./recruitment.html">Cơ hội nghề nghiệp</a>
           </div>
         </div>
-        <div class="hero-media">
-          <div class="hero-image">
-            <img src="./assets/hero.jpg" alt="Đội ngũ EAZ phát triển thương mại điện tử" />
-          </div>
-          <div class="proof-panel">
-            <strong>01/06/2025</strong>
-            <span>Cột mốc EAZ Việt Nam chính thức hình thành với định hướng phát triển thương mại điện tử bài bản.</span>
-          </div>
-        </div>
-      </section>
 
-      <section class="section">
-        <div class="stats" aria-label="Thông tin nhanh về EAZ">
-          <div class="stat"><strong>10 năm</strong><span>Kinh nghiệm vận hành thương mại điện tử chuyên sâu của đội ngũ nòng cốt</span></div>
-          <div class="stat"><strong>100+</strong><span>Nhân sự chuyên biệt cho Livestream, Affiliate, Marketing, Warehouse và vận hành</span></div>
-          <div class="stat"><strong>3</strong><span>Thương hiệu trọng tâm: Gooby, Rouya, Cohee</span></div>
-          <div class="stat"><strong>2028</strong><span>Mốc phát triển thương hiệu riêng và mở rộng hệ sinh thái</span></div>
+        <div class="orbit-wrap" aria-label="Infographic hệ sinh thái EAZ">
+          <div class="orbit">
+            <span class="orbit-node node-1">Gooby</span>
+            <span class="orbit-node node-2">Rouya</span>
+            <span class="orbit-node node-3">Cohee</span>
+            <span class="orbit-node node-4">Affiliate</span>
+            <span class="orbit-node node-5">Livestream</span>
+            <div class="orbit-core">
+              <strong>EAZ</strong>
+              <span>Ecosystem</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div class="band">
-        <section class="section split" id="about">
-          <div class="section-heading">
-            <p class="eyebrow">Chúng tôi là ai?</p>
-            <h2>EAZ được xây dựng bởi đội ngũ giàu kinh nghiệm trong thương mại điện tử</h2>
-            <p>
-              Thành lập từ ngày 01/06/2025, EAZ Việt Nam được xây dựng bởi đội ngũ giàu kinh nghiệm trong lĩnh vực
-              thương mại điện tử. Chúng tôi có đội ngũ nòng cốt với 10 năm kinh nghiệm vận hành chuyên sâu và khát vọng
-              đưa các sản phẩm chất lượng đến gần hơn với người tiêu dùng Việt Nam thông qua các nền tảng bán lẻ hiện đại.
-            </p>
-            <p>
-              Với quy mô hơn 100 nhân sự chuyên biệt cho từng mảng, EAZ không chỉ phân phối sản phẩm, mà còn kiến tạo
-              thương hiệu, tối ưu trải nghiệm khách hàng và xây dựng hệ thống vận hành bền vững.
-            </p>
-          </div>
-          <div class="info-stack">
-            <div class="info-row"><strong>Vai trò</strong><span>Đối tác phân phối và phát triển thương hiệu</span></div>
-            <div class="info-row"><strong>Ngành hàng</strong><span>Mẹ & Bé, Chăm sóc gia đình, Người cao tuổi</span></div>
-            <div class="info-row"><strong>Quy mô</strong><span>Hơn 100 nhân sự chuyên biệt theo từng mảng vận hành</span></div>
-            <div class="info-row"><strong>Năng lực</strong><span>Livestream Self selling, Affiliate, Marketing, Warehouse, dữ liệu và tăng trưởng</span></div>
-            <div class="info-row"><strong>Cam kết</strong><span>Sản phẩm và dịch vụ chất lượng vượt trội bằng sự tử tế</span></div>
-          </div>
-        </section>
-      </div>
-
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Năng lực vận hành</p>
-          <h2>Đội ngũ chuyên biệt cho từng mắt xích tăng trưởng</h2>
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Chúng tôi là ai?</p>
+          <h2>Đội ngũ thực chiến xây dựng tăng trưởng thương mại điện tử</h2>
+        </div>
+        <div class="rich-copy">
           <p>
-            EAZ tổ chức nhân sự theo các mảng trọng yếu của thương mại điện tử để vừa tăng tốc bán hàng, vừa giữ chất
-            lượng vận hành ổn định trên nhiều nền tảng.
+            Thành lập từ ngày 01/06/2025, EAZ Việt Nam được xây dựng bởi đội ngũ giàu kinh nghiệm trong lĩnh vực
+            thương mại điện tử. Đội ngũ nòng cốt có 10 năm kinh nghiệm vận hành chuyên sâu và khát vọng đưa các
+            sản phẩm chất lượng đến gần hơn với người tiêu dùng Việt Nam thông qua các nền tảng bán lẻ hiện đại.
+          </p>
+          <p>
+            EAZ không chỉ phân phối sản phẩm mà còn kiến tạo thương hiệu, tối ưu trải nghiệm khách hàng và xây dựng
+            hệ thống vận hành bền vững nhằm tạo ra giá trị lâu dài cho đối tác, người tiêu dùng và đội ngũ nhân sự.
           </p>
         </div>
-        <div class="cards four">
-          <article class="card">
-            <h3>Livestream Self selling</h3>
-            <p>Triển khai phiên bán hàng trực tiếp, tối ưu kịch bản, tương tác và tỷ lệ chuyển đổi theo từng sản phẩm.</p>
-          </article>
-          <article class="card">
-            <h3>Affiliate</h3>
-            <p>Xây dựng mạng lưới KOC/KOL, quản lý chiến dịch và mở rộng kênh doanh thu dựa trên hiệu quả thực tế.</p>
-          </article>
-          <article class="card">
-            <h3>Marketing</h3>
-            <p>Phát triển nội dung, quảng cáo, chương trình bán hàng và hệ thống đo lường cho từng nền tảng.</p>
-          </article>
-          <article class="card">
-            <h3>Warehouse</h3>
-            <p>Phối hợp kho vận, tồn kho và xử lý đơn hàng để đảm bảo trải nghiệm khách hàng nhất quán.</p>
-          </article>
-        </div>
       </section>
 
-      <section class="section" id="vision">
-        <div class="vision-board">
-          <article class="vision-main">
-            <p class="eyebrow">Tầm nhìn</p>
-            <h2>Trở thành doanh nghiệp thương mại điện tử số 1 trong lĩnh vực Mẹ & Bé và Người cao tuổi tại Việt Nam trong 10 năm tới.</h2>
-          </article>
-          <article class="card">
-            <h3>Sứ mệnh</h3>
-            <p>Mang đến cho khách hàng, đối tác và nhân viên những sản phẩm, dịch vụ chất lượng vượt trội bằng sự tử tế.</p>
-          </article>
-          <article class="card">
-            <h3>Triết lý kinh doanh</h3>
-            <p>Con người là nguồn vốn quý giá nhất. Khách hàng là tài sản quan trọng nhất. Dữ liệu và hệ thống là nền tảng cho mọi quyết định.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
+      <section class="section figures-section" id="figures">
         <div class="section-heading">
-          <p class="eyebrow">Giá trị cốt lõi</p>
-          <h2>Ba nền tảng trong cách EAZ tạo ra giá trị</h2>
+          <p class="eyebrow">Impressive figures</p>
+          <h2>Những con số định hình năng lực EAZ</h2>
         </div>
-        <div class="cards three">
-          <article class="card accent-blue">
-            <h3>Tư duy dịch vụ chuyên nghiệp</h3>
-            <p>Luôn đặt lợi ích của khách hàng và đối tác làm trung tâm trong mọi quyết định vận hành.</p>
+        <div class="figure-list">
+          <article>
+            <strong>100+</strong>
+            <div>
+              <h3>Nhân sự chuyên biệt</h3>
+              <p>Phân bổ theo các mảng Livestream Self selling, Affiliate, Marketing, Warehouse và vận hành sàn.</p>
+            </div>
           </article>
-          <article class="card accent-pink">
-            <h3>Sản phẩm chất lượng cao</h3>
-            <p>Được thị trường và người tiêu dùng tin tưởng, kiểm chứng qua hiệu quả sử dụng thực tế.</p>
+          <article>
+            <strong>10 năm</strong>
+            <div>
+              <h3>Kinh nghiệm vận hành TMĐT</h3>
+              <p>Đội ngũ nòng cốt đã tích lũy chuyên môn từ thực chiến thương mại điện tử chuyên sâu.</p>
+            </div>
           </article>
-          <article class="card accent-green">
-            <h3>Năng lực chuyên môn thực chiến</h3>
-            <p>Không ngừng học hỏi, phát triển và nâng cao năng lực từ dữ liệu, hệ thống và trải nghiệm thị trường.</p>
+          <article>
+            <strong>3</strong>
+            <div>
+              <h3>Thương hiệu trọng tâm</h3>
+              <p>Gooby, Rouya và Cohee trong ngành hàng Mẹ & Bé và Chăm sóc gia đình.</p>
+            </div>
+          </article>
+          <article>
+            <strong>A-Z</strong>
+            <div>
+              <h3>Năng lực toàn chuỗi</h3>
+              <p>Từ xây dựng thương hiệu, phân phối, nội dung, quảng cáo, dữ liệu đến kho vận và chăm sóc khách hàng.</p>
+            </div>
           </article>
         </div>
       </section>
 
-      <div class="band">
-        <section class="section" id="brands">
-          <div class="section-heading">
-            <p class="eyebrow">Danh mục thương hiệu</p>
-            <h2>Các thương hiệu EAZ đang phân phối và phát triển</h2>
-            <p>
-              Hệ sinh thái hiện tập trung vào những sản phẩm thiết yếu, có nhu cầu bền vững và yêu cầu cao về chất lượng.
-            </p>
-          </div>
-          <div class="brand-grid">
-            <article class="card brand-card">
-              <img src="./assets/gooby_premium.png" alt="Gooby - Chuyên gia bỉm đêm" />
-              <div><h3>Gooby</h3><p>Chuyên gia bỉm đêm, tập trung vào trải nghiệm chăm sóc bé an tâm hơn cho gia đình Việt.</p></div>
-            </article>
-            <article class="card brand-card">
-              <img src="./assets/rouya.png" alt="Rouya - Khoa học cho làn da nhạy cảm" />
-              <div><h3>Rouya</h3><p>Khoa học cho làn da nhạy cảm, hướng tới nhóm khách hàng cần sản phẩm chăm sóc dịu nhẹ.</p></div>
-            </article>
-            <article class="card brand-card">
-              <img src="./assets/cohee.png" alt="Cohee - Thế hệ mới, chuẩn mực mới" />
-              <div><h3>Cohee</h3><p>Thế hệ mới, chuẩn mực mới, phát triển theo hướng hiện đại, hiệu quả và dễ tiếp cận.</p></div>
-            </article>
-          </div>
-        </section>
-      </div>
+      <section class="section mission-board" id="mission">
+        <article class="mission-card vision">
+          <p class="eyebrow">Tầm nhìn</p>
+          <h2>Trở thành doanh nghiệp thương mại điện tử số 1 trong lĩnh vực Mẹ & Bé và Người cao tuổi tại Việt Nam trong 10 năm tới.</h2>
+        </article>
+        <article class="mission-card">
+          <h3>Sứ mệnh</h3>
+          <p>Mang đến cho khách hàng, đối tác và nhân viên những sản phẩm, dịch vụ chất lượng vượt trội bằng sự tử tế.</p>
+        </article>
+        <article class="mission-card">
+          <h3>Triết lý kinh doanh</h3>
+          <p>Con người là nguồn vốn quý giá nhất. Khách hàng là tài sản quan trọng nhất. Dữ liệu và hệ thống là nền tảng cho mọi quyết định.</p>
+        </article>
+      </section>
 
-      <section class="section culture" id="culture">
-        <div class="culture-note">
+      <section class="section" id="brands">
+        <div class="section-heading">
+          <p class="eyebrow">Brand ecosystem</p>
+          <h2>Danh mục thương hiệu đang được EAZ phát triển</h2>
+        </div>
+        <div class="brand-flow">
+          <article>
+            <img src="./assets/gooby_premium.png" alt="Gooby - Chuyên gia bỉm đêm" />
+            <h3>Gooby</h3>
+            <p>Chuyên gia bỉm đêm, tập trung vào trải nghiệm chăm sóc bé an tâm hơn cho gia đình Việt.</p>
+          </article>
+          <article>
+            <img src="./assets/rouya.png" alt="Rouya - Khoa học cho làn da nhạy cảm" />
+            <h3>Rouya</h3>
+            <p>Khoa học cho làn da nhạy cảm, hướng tới nhóm khách hàng cần sản phẩm chăm sóc dịu nhẹ.</p>
+          </article>
+          <article>
+            <img src="./assets/cohee.png" alt="Cohee - Thế hệ mới, chuẩn mực mới" />
+            <h3>Cohee</h3>
+            <p>Thế hệ mới, chuẩn mực mới, phát triển theo hướng hiện đại, hiệu quả và dễ tiếp cận.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section operations-map">
+        <div class="section-heading">
+          <p class="eyebrow">Operating system</p>
+          <h2>Bốn mũi nhọn vận hành tăng trưởng</h2>
+        </div>
+        <div class="process-wheel">
+          <div class="process-core">Data<br />& System</div>
+          <article class="process-item item-a"><span>01</span><h3>Livestream Self selling</h3><p>Tối ưu phiên bán hàng, kịch bản, tương tác và tỷ lệ chuyển đổi.</p></article>
+          <article class="process-item item-b"><span>02</span><h3>Affiliate</h3><p>Xây dựng mạng lưới KOC/KOL và mở rộng doanh thu dựa trên hiệu quả thực tế.</p></article>
+          <article class="process-item item-c"><span>03</span><h3>Marketing</h3><p>Phát triển nội dung, quảng cáo, chương trình bán hàng và hệ thống đo lường.</p></article>
+          <article class="process-item item-d"><span>04</span><h3>Warehouse</h3><p>Điều phối tồn kho, đơn hàng và chất lượng giao nhận nhất quán.</p></article>
+        </div>
+      </section>
+
+      <section class="section culture-section" id="culture">
+        <div class="section-heading">
           <p class="eyebrow">Văn hóa EAZ</p>
           <h2>Gắn kết • Chính trực • Quyết liệt • Sáng tạo</h2>
           <p>
@@ -820,230 +179,37 @@
             phát triển để cùng nhau tạo nên những giá trị bền vững.
           </p>
         </div>
-        <div class="cards">
-          <article class="card"><h3>Gắn kết</h3><p>Làm việc cùng nhau trên tinh thần hỗ trợ, minh bạch và cùng chịu trách nhiệm với kết quả.</p></article>
-          <article class="card"><h3>Chính trực</h3><p>Làm đúng, nói thật, giữ cam kết với khách hàng, đối tác và đồng đội.</p></article>
-          <article class="card"><h3>Quyết liệt</h3><p>Chủ động hành động, theo sát mục tiêu và giải quyết vấn đề đến nơi đến chốn.</p></article>
-          <article class="card"><h3>Sáng tạo</h3><p>Liên tục cải tiến cách làm, tận dụng dữ liệu và công nghệ để tăng tốc tăng trưởng.</p></article>
+        <div class="value-grid">
+          <article><span>01</span><h3>Tư duy dịch vụ chuyên nghiệp</h3><p>Luôn đặt lợi ích của khách hàng và đối tác làm trung tâm.</p></article>
+          <article><span>02</span><h3>Sản phẩm chất lượng cao</h3><p>Được thị trường và người tiêu dùng tin tưởng, kiểm chứng.</p></article>
+          <article><span>03</span><h3>Năng lực chuyên môn thực chiến</h3><p>Không ngừng học hỏi, phát triển và nâng cao năng lực.</p></article>
         </div>
       </section>
 
-      <div class="band">
-        <section class="section" id="jobs">
-          <div class="section-heading">
-            <p class="eyebrow">Cơ hội nghề nghiệp</p>
-            <h2>Gia nhập đội ngũ xây dựng tương lai thương mại điện tử Việt Nam</h2>
-            <p>
-              Với quy mô hơn 100 nhân sự, EAZ tìm kiếm những đồng đội thực chiến, yêu thích thương mại điện tử, dữ liệu,
-              vận hành và phát triển thương hiệu trong môi trường tăng trưởng nhanh.
-            </p>
-          </div>
-          <div class="jobs">
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Operations</span><span class="chip">Shopee/Lazada/TikTok Shop</span></div>
-                <h3>Nhân viên Vận hành Sàn</h3>
-              </div>
-              <ul>
-                <li>Quản lý gian hàng, đăng sản phẩm, tối ưu SEO sàn và chương trình khuyến mãi.</li>
-                <li>Theo dõi chỉ số vận hành, phối hợp xử lý tồn kho, đơn hàng và trải nghiệm khách hàng.</li>
-                <li>Phù hợp với ứng viên có kinh nghiệm Seller Center hoặc tư duy vận hành tốt.</li>
-              </ul>
-            </article>
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Marketing</span><span class="chip">Ads</span></div>
-                <h3>Chuyên viên Marketing Sàn</h3>
-              </div>
-              <ul>
-                <li>Lập kế hoạch và triển khai quảng cáo nội sàn, tối ưu ROAS và tỷ lệ chuyển đổi.</li>
-                <li>Phân tích dữ liệu chiến dịch, thử nghiệm thông điệp và tối ưu ngân sách theo mục tiêu.</li>
-                <li>Ưu tiên ứng viên hiểu thuật toán sàn và có tư duy số liệu.</li>
-              </ul>
-            </article>
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Livestream</span><span class="chip">Sales</span></div>
-                <h3>Live Streamer / Host Livestream</h3>
-              </div>
-              <ul>
-                <li>Livestream bán hàng trên TikTok Shop, Shopee và các kênh trọng điểm.</li>
-                <li>Giới thiệu sản phẩm, tương tác với khách hàng và phối hợp tăng tỷ lệ chốt đơn.</li>
-                <li>Phù hợp với người tự tin trước ống kính, năng lượng cao và giao tiếp tốt.</li>
-              </ul>
-            </article>
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Affiliate</span><span class="chip">KOC/KOL</span></div>
-                <h3>Chuyên viên Booking KOL/KOC</h3>
-              </div>
-              <ul>
-                <li>Tìm kiếm, đàm phán và quản lý mạng lưới creator cho chiến dịch affiliate.</li>
-                <li>Theo dõi hiệu quả hợp tác, đề xuất tối ưu nội dung, hoa hồng và lịch triển khai.</li>
-                <li>Ưu tiên ứng viên có quan hệ creator và kỹ năng đàm phán tốt.</li>
-              </ul>
-            </article>
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Data</span><span class="chip">BI</span></div>
-                <h3>Chuyên viên Phân tích Dữ liệu</h3>
-              </div>
-              <ul>
-                <li>Thu thập, làm sạch và phân tích dữ liệu omni-channel phục vụ ra quyết định.</li>
-                <li>Xây dựng báo cáo doanh thu, hành vi khách hàng, hiệu quả chiến dịch và dự báo xu hướng.</li>
-                <li>Ưu tiên ứng viên thành thạo Excel, SQL, Power BI hoặc Tableau.</li>
-              </ul>
-            </article>
-            <article class="job-card">
-              <div>
-                <div class="job-meta"><span class="chip">Growth</span><span class="chip">Brand</span></div>
-                <h3>Ứng tuyển mở</h3>
-              </div>
-              <ul>
-                <li>Dành cho ứng viên muốn phát triển cùng EAZ nhưng chưa thấy vị trí phù hợp.</li>
-                <li>Gửi thông tin năng lực, kinh nghiệm và định hướng để đội ngũ nhân sự kết nối khi có cơ hội.</li>
-                <li>Phù hợp với nhân sự chủ động, ham học hỏi và thích môi trường tăng trưởng nhanh.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-      </div>
-
-      <section class="section">
+      <section class="section roadmap-section" id="roadmap">
         <div class="section-heading">
           <p class="eyebrow">Lộ trình phát triển</p>
-          <h2>Ba cột mốc EAZ hướng tới</h2>
+          <h2>Đi hết phần giới thiệu công ty bằng bức tranh tăng trưởng 2026-2028</h2>
         </div>
-        <div class="timeline">
-          <article>
-            <span>2026</span>
-            <h3>Đối tác TMĐT chiến lược</h3>
-            <p>Trở thành đối tác thương mại điện tử chiến lược toàn diện cho doanh nghiệp.</p>
-          </article>
-          <article>
-            <span>2027</span>
-            <h3>Mở rộng phân phối độc quyền</h3>
-            <p>Mở rộng hợp tác phân phối độc quyền trên các nền tảng thương mại điện tử.</p>
-          </article>
-          <article>
-            <span>2028</span>
-            <h3>Phát triển thương hiệu riêng</h3>
-            <p>Phát triển thương hiệu riêng, mở rộng hệ sinh thái kinh doanh trong nước và quốc tế.</p>
-          </article>
+        <div class="roadmap">
+          <article><span>2026</span><h3>Đối tác TMĐT chiến lược</h3><p>Trở thành đối tác thương mại điện tử chiến lược toàn diện cho doanh nghiệp.</p></article>
+          <article><span>2027</span><h3>Mở rộng phân phối độc quyền</h3><p>Mở rộng hợp tác phân phối độc quyền trên các nền tảng thương mại điện tử.</p></article>
+          <article><span>2028</span><h3>Phát triển thương hiệu riêng</h3><p>Phát triển thương hiệu riêng, mở rộng hệ sinh thái kinh doanh trong nước và quốc tế.</p></article>
         </div>
       </section>
 
-      <div class="band">
-        <section class="section contact" id="contact">
-          <div>
-            <p class="eyebrow">Liên hệ ứng tuyển</p>
-            <h2>Đồng hành cùng tương lai thương mại điện tử Việt Nam</h2>
-            <p>
-              Nếu bạn quan tâm đến cơ hội làm việc tại EAZ, hãy gửi thông tin ứng tuyển. Bộ phận nhân sự sẽ liên hệ khi
-              có vị trí phù hợp.
-            </p>
-          </div>
-          <form class="contact-panel form-grid" id="apply-form">
-            <label>
-              Họ và tên
-              <input name="name" type="text" placeholder="Nguyễn Văn A" required />
-            </label>
-            <label>
-              Số điện thoại
-              <input name="phone" type="tel" placeholder="0988777666" required />
-            </label>
-            <label>
-              Email
-              <input name="email" type="email" placeholder="ungvien@email.com" />
-            </label>
-            <label>
-              Vị trí quan tâm
-              <select name="job">
-                <option>Nhân viên Vận hành Sàn</option>
-                <option>Chuyên viên Marketing Sàn</option>
-                <option>Live Streamer / Host Livestream</option>
-                <option>Chuyên viên Booking KOL/KOC</option>
-                <option>Chuyên viên Phân tích Dữ liệu</option>
-                <option>Ứng tuyển mở</option>
-              </select>
-            </label>
-            <label>
-              Ghi chú
-              <textarea name="message" rows="4" placeholder="Kinh nghiệm nổi bật, link CV hoặc thời gian có thể trao đổi"></textarea>
-            </label>
-            <button class="button primary" type="submit">Gửi thông tin ứng tuyển</button>
-          </form>
-        </section>
-      </div>
+      <section class="section company-close">
+        <p class="eyebrow">Đồng hành cùng tương lai TMĐT Việt Nam</p>
+        <h2>EAZ tạo giá trị lâu dài cho đối tác, người tiêu dùng và đội ngũ nhân sự.</h2>
+        <a class="button primary" href="./recruitment.html">Sang trang tuyển dụng</a>
+      </section>
     </main>
 
     <footer class="footer">
-      <div class="footer-inner">
-        <span>© EAZ Việt Nam</span>
-        <span>eCommerce from A to Z</span>
-      </div>
+      <span>© EAZ Việt Nam</span>
+      <span>eCommerce from A to Z</span>
     </footer>
 
-    <script>
-      const menuButton = document.querySelector(".menu-button");
-      const navLinks = document.querySelector(".nav-links");
-      const applyForm = document.querySelector("#apply-form");
-      const scriptUrl =
-        "https://script.google.com/macros/s/AKfycbzBjNIdd3G4ooR4OVz_641z214_kBus8PmtuPjl6Ik9EOlcuQwKfK-cHBDU3p-XSa5I2w/exec";
-
-      menuButton.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("open");
-          menuButton.setAttribute("aria-expanded", "false");
-        });
-      });
-
-      function showToast(message) {
-        const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        window.setTimeout(() => toast.remove(), 2400);
-      }
-
-      applyForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const formData = new FormData(applyForm);
-        const payload = Object.fromEntries(formData.entries());
-        const button = applyForm.querySelector("button");
-
-        button.disabled = true;
-        button.textContent = "Đang gửi...";
-
-        try {
-          await fetch(scriptUrl, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({
-              name: payload.name,
-              phone: "'" + payload.phone,
-              email: payload.email,
-              job_position: payload.job,
-              message: payload.message,
-              source: window.location.href,
-              timestamp: new Date().toLocaleString("vi-VN"),
-            }),
-          });
-          applyForm.reset();
-          showToast("Đã ghi nhận thông tin ứng tuyển. EAZ sẽ liên hệ lại khi phù hợp.");
-        } catch (error) {
-          showToast("Chưa gửi được thông tin. Vui lòng thử lại sau.");
-        } finally {
-          button.disabled = false;
-          button.textContent = "Gửi thông tin ứng tuyển";
-        }
-      });
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>
