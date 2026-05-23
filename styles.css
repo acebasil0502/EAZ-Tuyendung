@@ -255,24 +255,27 @@ li {
   position: absolute;
   z-index: 3;
   display: grid;
-  width: 88px;
-  height: 88px;
+  width: 104px;
+  height: 104px;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--primary);
   background: #fff;
   box-shadow: var(--shadow);
-  font-size: 12px;
-  font-weight: 850;
-  text-align: center;
+  overflow: hidden;
+  padding: 13px;
 }
 
-.node-1 { left: 8%; top: 45%; }
-.node-2 { left: 25%; top: 19%; }
-.node-3 { left: 50%; top: 7%; transform: translateX(-50%); }
-.node-4 { right: 25%; top: 19%; }
-.node-5 { right: 7%; top: 45%; }
+.orbit-node img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.node-gooby { left: 9%; top: 42%; }
+.node-cohee { left: 50%; top: 6%; transform: translateX(-50%); }
+.node-rouya { right: 9%; top: 42%; }
 
 .section {
   padding: 82px 0;
@@ -379,25 +382,78 @@ li {
   overflow: hidden;
 }
 
-.brand-flow img {
+.brand-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 260px 1fr;
+  min-height: 520px;
+  background: #fff;
+  box-shadow: 0 20px 54px rgba(23, 32, 51, 0.08);
+}
+
+.brand-media {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8fbff, #eef7ff);
+}
+
+.brand-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 34%;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.88));
+}
+
+.brand-product {
   width: 100%;
-  height: 230px;
-  object-fit: cover;
-  background: #eef3f8;
+  height: 100%;
+  object-fit: contain;
+  padding: 22px;
+}
+
+.brand-body {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 22px;
+}
+
+.brand-logo {
+  width: 132px;
+  height: 58px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 6px;
+}
+
+.gooby-card .brand-logo {
+  width: 150px;
+}
+
+.cohee-card .brand-logo {
+  width: 122px;
+}
+
+.rouya-card .brand-logo {
+  width: 118px;
 }
 
 .brand-flow h3,
 .brand-flow p {
-  padding-left: 22px;
-  padding-right: 22px;
+  margin: 0;
 }
 
-.brand-flow h3 {
-  padding-top: 20px;
+.gooby-card .brand-media {
+  background: linear-gradient(135deg, #fff7ed, #fff1dc);
 }
 
-.brand-flow p {
-  padding-bottom: 22px;
+.cohee-card .brand-media {
+  background: linear-gradient(135deg, #f7f3ff, #f1edff);
+}
+
+.rouya-card .brand-media {
+  background: linear-gradient(135deg, #eef8ff, #fff6dd);
 }
 
 .process-wheel {
@@ -714,9 +770,14 @@ textarea:focus {
   }
 
   .orbit-node {
-    width: 70px;
-    height: 70px;
-    font-size: 10px;
+    width: 76px;
+    height: 76px;
+    padding: 10px;
+  }
+
+  .brand-card {
+    min-height: auto;
+    grid-template-rows: 230px 1fr;
   }
 
   .brand-flow,
