@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="announcement">
+      <a href="./recruitment.html">EAZ đang mở rộng đội ngũ thương mại điện tử 100+ nhân sự →</a>
+    </div>
+
     <header class="site-header">
       <nav class="nav" aria-label="Điều hướng chính">
         <a class="brand" href="./index.html" aria-label="Trang chủ EAZ">
@@ -22,10 +26,10 @@
         </a>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
         <div class="nav-links" id="main-nav">
-          <a href="#ecosystem">Hệ sinh thái</a>
+          <a href="#about">Giới thiệu</a>
           <a href="#figures">Số liệu</a>
           <a href="#brands">Thương hiệu</a>
-          <a href="#culture">Văn hóa</a>
+          <a href="#operations">Vận hành</a>
           <a href="#roadmap">Lộ trình</a>
           <a class="nav-pill" href="./recruitment.html">Tuyển dụng</a>
         </div>
@@ -33,7 +37,7 @@
     </header>
 
     <main>
-      <section class="hero hero-infographic" id="ecosystem">
+      <section class="hero nacelle-hero" id="ecosystem">
         <div class="hero-copy">
           <p class="eyebrow">eCommerce from A to Z</p>
           <h1>Đối tác thương mại điện tử chiến lược toàn diện</h1>
@@ -42,30 +46,53 @@
             hệ sinh thái bán lẻ đa kênh cho ngành Mẹ & Bé, Chăm sóc gia đình và Người cao tuổi.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#figures">Xem hệ sinh thái</a>
+            <a class="button primary" href="#brands">Xem hệ sinh thái</a>
             <a class="button secondary" href="./recruitment.html">Cơ hội nghề nghiệp</a>
           </div>
         </div>
 
-        <div class="orbit-wrap" aria-label="Infographic hệ sinh thái EAZ">
-          <div class="orbit">
-            <span class="orbit-node node-gooby"><img src="./assets/brand-gooby-logo.jpg" alt="Gooby" /></span>
-            <span class="orbit-node node-cohee"><img src="./assets/brand-cohee-logo.jpg" alt="Cohee" /></span>
-            <span class="orbit-node node-rouya"><img src="./assets/brand-rouya-logo.jpg" alt="Rouya" /></span>
-            <div class="orbit-core">
-              <strong>EAZ</strong>
-              <span>Ecosystem</span>
+        <div class="hero-stage" aria-label="Minh họa hệ sinh thái thương hiệu EAZ">
+          <div class="dashboard-card">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="dashboard-grid">
+              <article class="dash-brand gooby">
+                <img src="./assets/brand-gooby-logo.jpg" alt="Logo Gooby" />
+                <strong>Gooby</strong>
+              </article>
+              <article class="dash-brand cohee">
+                <img src="./assets/brand-cohee-logo.jpg" alt="Logo Cohee" />
+                <strong>Cohee</strong>
+              </article>
+              <article class="dash-brand rouya">
+                <img src="./assets/brand-rouya-logo.jpg" alt="Logo Rouya" />
+                <strong>Rouya</strong>
+              </article>
+            </div>
+            <div class="dashboard-products">
+              <img src="./assets/brand-gooby-product.jpg" alt="Bao bì Gooby" />
+              <img src="./assets/brand-cohee-product.jpg" alt="Bao bì Cohee" />
+              <img src="./assets/brand-rouya-product.jpg" alt="Bao bì Rouya Ultra" />
             </div>
           </div>
+          <div class="floating-metric metric-a"><strong>100+</strong><span>Nhân sự chuyên biệt</span></div>
+          <div class="floating-metric metric-b"><strong>10 năm</strong><span>Kinh nghiệm TMĐT</span></div>
         </div>
       </section>
 
-      <section class="section split-section">
-        <div>
+      <section class="logo-strip" aria-label="Thương hiệu EAZ">
+        <span>Brand ecosystem</span>
+        <img src="./assets/brand-gooby-logo.jpg" alt="Gooby" />
+        <img src="./assets/brand-cohee-logo.jpg" alt="Cohee" />
+        <img src="./assets/brand-rouya-logo.jpg" alt="Rouya" />
+      </section>
+
+      <section class="section feature-split" id="about">
+        <div class="feature-media">
+          <img src="./assets/brand-rouya-product.jpg" alt="Sản phẩm trong hệ sinh thái EAZ" />
+        </div>
+        <div class="feature-copy">
           <p class="eyebrow">Chúng tôi là ai?</p>
           <h2>Đội ngũ thực chiến xây dựng tăng trưởng thương mại điện tử</h2>
-        </div>
-        <div class="rich-copy">
           <p>
             Thành lập từ ngày 01/06/2025, EAZ Việt Nam được xây dựng bởi đội ngũ giàu kinh nghiệm trong lĩnh vực
             thương mại điện tử. Đội ngũ nòng cốt có 10 năm kinh nghiệm vận hành chuyên sâu và khát vọng đưa các
@@ -84,34 +111,10 @@
           <h2>Những con số định hình năng lực EAZ</h2>
         </div>
         <div class="figure-list">
-          <article>
-            <strong>100+</strong>
-            <div>
-              <h3>Nhân sự chuyên biệt</h3>
-              <p>Phân bổ theo các mảng Livestream Self selling, Affiliate, Marketing, Warehouse và vận hành sàn.</p>
-            </div>
-          </article>
-          <article>
-            <strong>10 năm</strong>
-            <div>
-              <h3>Kinh nghiệm vận hành TMĐT</h3>
-              <p>Đội ngũ nòng cốt đã tích lũy chuyên môn từ thực chiến thương mại điện tử chuyên sâu.</p>
-            </div>
-          </article>
-          <article>
-            <strong>3</strong>
-            <div>
-              <h3>Thương hiệu trọng tâm</h3>
-              <p>Gooby, Rouya và Cohee trong ngành hàng Mẹ & Bé và Chăm sóc gia đình.</p>
-            </div>
-          </article>
-          <article>
-            <strong>A-Z</strong>
-            <div>
-              <h3>Năng lực toàn chuỗi</h3>
-              <p>Từ xây dựng thương hiệu, phân phối, nội dung, quảng cáo, dữ liệu đến kho vận và chăm sóc khách hàng.</p>
-            </div>
-          </article>
+          <article><strong>100+</strong><h3>Nhân sự chuyên biệt</h3><p>Phân bổ theo Livestream Self selling, Affiliate, Marketing, Warehouse và vận hành sàn.</p></article>
+          <article><strong>10 năm</strong><h3>Kinh nghiệm vận hành TMĐT</h3><p>Đội ngũ nòng cốt đã tích lũy chuyên môn từ thực chiến thương mại điện tử chuyên sâu.</p></article>
+          <article><strong>3</strong><h3>Thương hiệu trọng tâm</h3><p>Gooby, Rouya và Cohee trong ngành hàng Mẹ & Bé và Chăm sóc gia đình.</p></article>
+          <article><strong>A-Z</strong><h3>Năng lực toàn chuỗi</h3><p>Từ xây dựng thương hiệu, phân phối, nội dung, quảng cáo, dữ liệu đến kho vận và chăm sóc khách hàng.</p></article>
         </div>
       </section>
 
@@ -141,49 +144,30 @@
         </div>
         <div class="brand-flow">
           <article class="brand-card gooby-card">
-            <div class="brand-media">
-              <img class="brand-product" src="./assets/brand-gooby-product.jpg" alt="Bao bì sản phẩm Gooby" />
-            </div>
-            <div class="brand-body">
-              <img class="brand-logo" src="./assets/brand-gooby-logo.jpg" alt="Logo Gooby" />
-              <h3>Gooby</h3>
-              <p>Chuyên gia bỉm đêm, tập trung vào trải nghiệm chăm sóc bé an tâm hơn cho gia đình Việt.</p>
-            </div>
+            <div class="brand-media"><img class="brand-product" src="./assets/brand-gooby-product.jpg" alt="Bao bì sản phẩm Gooby" /></div>
+            <div class="brand-body"><img class="brand-logo" src="./assets/brand-gooby-logo.jpg" alt="Logo Gooby" /><h3>Gooby</h3><p>Chuyên gia bỉm đêm, tập trung vào trải nghiệm chăm sóc bé an tâm hơn cho gia đình Việt.</p></div>
           </article>
           <article class="brand-card cohee-card">
-            <div class="brand-media">
-              <img class="brand-product" src="./assets/brand-cohee-product.jpg" alt="Bao bì sản phẩm Cohee" />
-            </div>
-            <div class="brand-body">
-              <img class="brand-logo" src="./assets/brand-cohee-logo.jpg" alt="Logo Cohee" />
-              <h3>Cohee</h3>
-              <p>Thế hệ mới, chuẩn mực mới trong chăm sóc sức khỏe vệ sinh phụ nữ.</p>
-            </div>
+            <div class="brand-media"><img class="brand-product" src="./assets/brand-cohee-product.jpg" alt="Bao bì sản phẩm Cohee" /></div>
+            <div class="brand-body"><img class="brand-logo" src="./assets/brand-cohee-logo.jpg" alt="Logo Cohee" /><h3>Cohee</h3><p>Thế hệ mới, chuẩn mực mới trong chăm sóc sức khỏe vệ sinh phụ nữ.</p></div>
           </article>
           <article class="brand-card rouya-card">
-            <div class="brand-media">
-              <img class="brand-product" src="./assets/brand-rouya-product.jpg" alt="Bao bì sản phẩm Rouya Ultra" />
-            </div>
-            <div class="brand-body">
-              <img class="brand-logo" src="./assets/brand-rouya-logo.jpg" alt="Logo Rouya" />
-              <h3>Rouya</h3>
-              <p>Khoa học cho làn da nhạy cảm, hướng tới nhóm khách hàng cần sản phẩm chăm sóc dịu nhẹ.</p>
-            </div>
+            <div class="brand-media"><img class="brand-product" src="./assets/brand-rouya-product.jpg" alt="Bao bì sản phẩm Rouya Ultra" /></div>
+            <div class="brand-body"><img class="brand-logo" src="./assets/brand-rouya-logo.jpg" alt="Logo Rouya" /><h3>Rouya</h3><p>Khoa học cho làn da nhạy cảm, hướng tới nhóm khách hàng cần sản phẩm chăm sóc dịu nhẹ.</p></div>
           </article>
         </div>
       </section>
 
-      <section class="section operations-map">
+      <section class="section steps-section" id="operations">
         <div class="section-heading">
           <p class="eyebrow">Operating system</p>
           <h2>Bốn mũi nhọn vận hành tăng trưởng</h2>
         </div>
-        <div class="process-wheel">
-          <div class="process-core">Data<br />& System</div>
-          <article class="process-item item-a"><span>01</span><h3>Livestream Self selling</h3><p>Tối ưu phiên bán hàng, kịch bản, tương tác và tỷ lệ chuyển đổi.</p></article>
-          <article class="process-item item-b"><span>02</span><h3>Affiliate</h3><p>Xây dựng mạng lưới KOC/KOL và mở rộng doanh thu dựa trên hiệu quả thực tế.</p></article>
-          <article class="process-item item-c"><span>03</span><h3>Marketing</h3><p>Phát triển nội dung, quảng cáo, chương trình bán hàng và hệ thống đo lường.</p></article>
-          <article class="process-item item-d"><span>04</span><h3>Warehouse</h3><p>Điều phối tồn kho, đơn hàng và chất lượng giao nhận nhất quán.</p></article>
+        <div class="steps-grid">
+          <article><span>01</span><h3>Livestream Self selling</h3><p>Tối ưu phiên bán hàng, kịch bản, tương tác và tỷ lệ chuyển đổi.</p></article>
+          <article><span>02</span><h3>Affiliate</h3><p>Xây dựng mạng lưới KOC/KOL và mở rộng doanh thu dựa trên hiệu quả thực tế.</p></article>
+          <article><span>03</span><h3>Marketing</h3><p>Phát triển nội dung, quảng cáo, chương trình bán hàng và hệ thống đo lường.</p></article>
+          <article><span>04</span><h3>Warehouse</h3><p>Điều phối tồn kho, đơn hàng và chất lượng giao nhận nhất quán.</p></article>
         </div>
       </section>
 
@@ -215,7 +199,7 @@
         </div>
       </section>
 
-      <section class="section company-close">
+      <section class="section final-cta">
         <p class="eyebrow">Đồng hành cùng tương lai TMĐT Việt Nam</p>
         <h2>EAZ tạo giá trị lâu dài cho đối tác, người tiêu dùng và đội ngũ nhân sự.</h2>
         <a class="button primary" href="./recruitment.html">Sang trang tuyển dụng</a>
